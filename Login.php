@@ -22,7 +22,7 @@ if(isset($_POST['btnLogin'])){
         $us=pg_escape_string($us);
         $pass=md5("$pa");
         $sq = "Select Username, Password, state from customer where Username='$us' and Password='$pass'";
-        $res= pg_query($sq) or die(pg_error());
+        $res= pg_query($sq) && die(pg_error());
         $check = pg_num_rows($res);
         $row = pg_fetch_row($sq);
         if($check==1)
