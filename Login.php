@@ -33,7 +33,7 @@ if (isset($_POST['btnLogin'])) {
 		$us = pg_real_escape_string($us);
 		$pa = htmlspecialchars(pg_real_escape_string( $pa));
 		$pass = md5($pa);
-		$res = pg_query( "SELECT Username, Password, state FROM Customer WHERE Username='$us' AND Password='$pass'")
+		$res = pg_query( "SELECT Username, Password, state FROM public.customer WHERE Username='$us' AND Password='$pass'")
 		or die(pg_errno());
 		$row = pg_fetch_array($res, pg_ASSOC);
 		if(pg_num_rows($res)==1){				
