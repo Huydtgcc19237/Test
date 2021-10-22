@@ -22,13 +22,13 @@ if(isset($_POST['btnLogin'])){
         $us=pg_escape_string($us);
         $pass=md5("$pa");
         $sq = "Select Username, Password, state from customer where Username='$us' and Password='$pass'";
-        $res= pg_query($sq) && die(pg_error());
+        $res= pg_query($sq) or die(pg_error());
         $check = pg_num_rows($res);
-        $row = pg_fetch_row($sq);
+        $row = pg_fetch_row($res);
         if($check==1)
         {
             $_SESSION["us"]=$us;
-            $_SESSION["admin"]=$row['state'];
+            $_SESSION["admin"]=$row[2];
             echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
 
         }
