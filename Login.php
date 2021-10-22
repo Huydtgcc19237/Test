@@ -29,13 +29,13 @@ if (isset($_POST['btnLogin'])) {
 		echo $err;
 	}
 	else{
-		pg_connect("postgres://kpknfasetxhine:67da40fb98b4bb98a481cebe3383cabd50275b3ade3044685433cba0823fb8f5@ec2-3-213-41-172.compute-1.amazonaws.com:5432/d9dr4kegrianvb");
-		$us = pg_real_escape_string($us);
-		$pa = htmlspecialchars(pg_real_escape_string( $pa));
-		$pass = md5($pa);
-		$res = pg_query( "SELECT Username, Password, state FROM public.customer WHERE Username='$us' AND Password='$pass'")
-		or die(pg_errno($conn));
-		$row = pg_fetch_array($res, MYSQLI_ASSOC);
+		include_once("connection.php");
+        $us=pg_escape_string($us);
+        $pass=md5("$pa");
+        $sq = "Select Username, Password, state from customer where Username='$us' and Password='$pass'";
+        $res= pg_query($sq) or die(pg_error());
+        $check = pg_num_rows($res);
+        $row = pg_fetch_row($sq);
 		if(pg_num_rows($res)==1){				
 			$_SESSION["us"] = $us;
 			$_SESSION["admin"] = $row["state"];
