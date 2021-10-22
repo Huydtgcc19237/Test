@@ -43,10 +43,10 @@
         include_once("connection.php");
         $pass=md5($pass1);
         $sq="select * from customer where Username='$us' or email='$email'";
-        $res=mysqli_query($conn,$sq);
-        if(mysqli_num_rows($res)==0){
-            mysqli_query($conn,"Insert into customer (Username, Password, CustName,gender,Address,telephone,email, CusDate, CusMonth, CusYear,SSN,ActiveCode, state) values('$us','$pass','$fullname','$sex','$address','$tel','$email','$date','$month','$year','','',0)")
-            or die(mysqli_error($conn));
+        $res=pg_query($sq);
+        if(pg_num_rows($res)==0){
+            pg_query(,"Insert into customer (Username, Password, CustName,gender,Address,telephone,email, CusDate, CusMonth, CusYear,SSN,ActiveCode, state) values('$us','$pass','$fullname','$sex','$address','$tel','$email','$date','$month','$year','','',0)")
+            or die(pg_error());
             echo"You have registered successfully";
         }
         else{
