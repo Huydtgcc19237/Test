@@ -34,7 +34,7 @@ if (isset($_POST['btnLogin'])) {
 		$pa = htmlspecialchars(pg_real_escape_string( $pa));
 		$pass = md5($pa);
 		$res = pg_query( "SELECT Username, Password, state FROM public.customer WHERE Username='$us' AND Password='$pass'")
-		or die(pg_errno());
+		or die(pg_errno($conn));
 		$row = pg_fetch_array($res, MYSQLI_ASSOC);
 		if(pg_num_rows($res)==1){				
 			$_SESSION["us"] = $us;
