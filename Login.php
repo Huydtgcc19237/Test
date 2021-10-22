@@ -1,82 +1,68 @@
-<?php
-    /*if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
-    {*/
-?> 
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/custom.css">
-<script src="js/jquery-3.2.0.min.js"/></script>
-<script src="js/jquery.dataTables.min.js"/></script>
-<script src="js/dataTables.bootstrap.min.js"/></script>
+<div id="top">
 <?php
-if (isset($_POST['btnLogin'])) {
+if(isset($_POST['btnLogin'])){
+    $us =$_POST['txtUsername'];
+    $pa=$_POST['txtPass'];
 
-	$us = $_POST['txtUsername'];
-	$pa = $_POST['txtPass'];
-	
-    $err = "";
-   	if($us=="")
-	{
-		$err .= "Please do not leave username blank!!!<br/>";
-	}
-	if($pa=="")
-	{
-		$err .= "Please do not leave password blank!!!<br/>";
-	}
+    $err="";
+    if($us==""){
+        $err.="Enter Username, please<br/>";
+    }
+    else if($pa==""){
+        $err.="Enter Password, please<br/>";
+    }
 
-	if($err != ""){
-		echo $err;
-	}
-	else{
-		include_once("connection.php");
+   if($err != ""){
+        echo $err;
+   }
+    else{
+        include_once("connection.php");
         $us=pg_escape_string($us);
         $pass=md5("$pa");
         $sq = "Select Username, Password, state from customer where Username='$us' and Password='$pass'";
         $res= pg_query($sq) or die(pg_error());
         $check = pg_num_rows($res);
         $row = pg_fetch_row($sq);
-		if(pg_num_rows($res)==1){				
-			$_SESSION["us"] = $us;
-			$_SESSION["admin"] = $row["state"];
-			echo '<meta http-equiv="refresh" content="0;URL=?page=index.php"/>';
-			}
-		else{
-			echo "Username or password doesn't exist. Please try again!";
-			}					
-	}
+        if($check==1)
+        {
+            $_SESSION["us"]=$us;
+            $_SESSION["admin"]=$row['state'];
+            echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
+
+        }
+        else
+        {
+            echo "Username or password is incorrect, please login again";
+        }
+    }
 }
+
 ?>
+
+<form id="form1" name="form1" method="POST">
+
+<div class="container">	
 <h1>Login</h1>
-<form id="form1" name="form1" method="POST" action="">
-<div class="form-group">
-    <div class="form-group">				    
-        <label for="txtUsername" class="col-sm-2 control-label">Username(*):</label>
-		<div class="col-sm-6">
-		      <input type="text" name="txtUsername" id="txtUsername" class="form-control" placeholder="Username" value=""/>
-		</div>
-      </div>  
-      
-    <div class="form-group">
-		<label for="txtPass" class="col-sm-2 control-label">Password(*):  </label>			
-		<div class="col-sm-6">
-		      	<input type="password" name="txtPass" id="txtPass" class="form-control" placeholder="Password" value=""/>
-		</div>
-	</div> 
-	<div class="form-group"> 
-        <div class="col-sm-2"></div>
-        <div class="col-sm-6">
-        	<input type="submit" name="btnLogin"  class="btn btn-primary" id="btnLogin" value="Login"/>
-            <input type="submit" name="btnCancel"  class="btn btn-primary" id="btnLogin" value="Cancel"/>
-			<div><br></div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Username(*)</label>
+  <input type="text" name="txtUsername" id="txtUsername" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Password(*)</label>
+  <input type="password" name="txtPass" id="txtPass" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+</div>
+<div class="form-group"> 
+        <div class="col-sm-10">
+        	<input type="submit" name="btnLogin"  class="btn btn-primary bre" id="btnLogin" value="Login"/>
+            <input type="button" name="btnCancel"  class="btn btn-primary bre" id="btnCancel" value="Cancel" onclick="window.location='index.php'" />
 		</div>  
 	</div>
- </div>
-    
-</form>
-<div>
-<H4><a href="?page=register" target="blank">Click here</a> to register!</H4>
 </div>
-<?php
- 
-?>
+
+</form>
+</div>
+
+
+   
