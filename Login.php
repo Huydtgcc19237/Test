@@ -30,13 +30,13 @@ if (isset($_POST['btnLogin'])) {
 	}
 	else{
 		include_once("connection.php");
-		$us = mysqli_real_escape_string($conn,$us);
-		$pa = htmlspecialchars(mysqli_real_escape_string($conn, $pa));
+		$us = pg_real_escape_string($us);
+		$pa = htmlspecialchars(pg_real_escape_string( $pa));
 		$pass = md5($pa);
-		$res = mysqli_query($conn, "SELECT Username, Password, state FROM Customer WHERE Username='$us' AND Password='$pass'")
-		or die(mysqli_errno($conn));
-		$row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-		if(mysqli_num_rows($res)==1){				
+		$res = pg_query( "SELECT Username, Password, state FROM Customer WHERE Username='$us' AND Password='$pass'")
+		or die(pg_errno());
+		$row = pg_fetch_array($res, pg_ASSOC);
+		if(pg_num_rows($res)==1){				
 			$_SESSION["us"] = $us;
 			$_SESSION["admin"] = $row["state"];
 			echo '<meta http-equiv="refresh" content="0;URL=?page=index.php"/>';
