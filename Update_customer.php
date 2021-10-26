@@ -2,8 +2,8 @@
 //Get custmer information
 $query = "SELECT CustName, Address, email, telephone 
 FROM customer WHERE Username ='" . $_SESSION["us"]."'";
-$result = pg_query($conn,$query) or die(pg_error($conn));
-$row = pg_fetch_array($result, pg_ASSOC);
+$result = pg_query($query) or die(pg_error());
+$row = pg_fetch_array($result);
 
 $us = $_SESSION["us"];
 $email = $row["email"];
@@ -25,13 +25,13 @@ if(isset($_POST['btnUpdate'])){
 			
 			$sq="UPDATE customer
 			SET CustName='$fullname',Address='$address',telephone='$telephone',Password='$pass' WHERE Username='".$_SESSION['us']."'";
-			pg_query($sq) or die(mysqli_error());
+			pg_query($sq) or die(pg_error());
 		}
 		//Customer does not changes password
 		else {
 			$sq="UPDATE customer
 			SET CustName='$fullname',Address='$address',telephone='$telephone',Password='$pass' WHERE Username='".$_SESSION['us']."'";
-			pg_query($sq) or die(mysqlo_error());
+			pg_query($sq) or die(pg_error());
 		}
 		echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
 	}else {
