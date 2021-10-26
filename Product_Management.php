@@ -50,7 +50,7 @@
 			$No=1;
             $result=pg_query("Select Product_ID, Product_Name, Price, Pro_qty,Pro_image,Cat_Name from product a, category b
             where a.Cat_ID=b.Cat_ID Order by ProDate DESC");
-            while($row=pg_fetch_array($result,MYSQLI_ASSOC)){	
+            while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
