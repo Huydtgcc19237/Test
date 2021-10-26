@@ -21,9 +21,9 @@
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = mysqli_query($conn, "SELECT * FROM orders ") 
-                        or die(mysqli_error($conn));
-                while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+                $result = pg_query( "SELECT * FROM orders ") 
+                        or die(pg_error());
+                while($row=pg_fetch_array($result))
                 {
             ?>
                     <tr>
