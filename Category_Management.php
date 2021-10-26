@@ -17,7 +17,7 @@
         if(isset($_GET["function"])=='del'){
             if(isset($_GET["id"])){
                 $id=$_GET["id"];
-                mysqli_query($conn,"delete from category where Cat_ID='$id'");
+                pg_query("delete from category where Cat_ID='$id'");
             }
         }
         ?>
@@ -41,8 +41,8 @@
 			<tbody>
             <?php
             $No=1;
-            $result=mysqli_query($conn,"Select * from category");
-            while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
+            $result=pg_query($conn,"Select * from category");
+            while($row=pg_fetch_array($result))
             {
             ?>
 			<tr>
