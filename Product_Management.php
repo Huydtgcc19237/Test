@@ -41,7 +41,7 @@
                     $row=pg_fetch_array($res);
                     $filePic=$row['Pro_image'];
                     unlink("images/".$filePic);
-                    pg_query($conn,"delete from product where Product_ID='$id'");
+                    pg_query("delete from product where Product_ID='$id'");
                 }
             }
             ?>
