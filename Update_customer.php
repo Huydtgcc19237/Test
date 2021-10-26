@@ -25,13 +25,13 @@ if(isset($_POST['btnUpdate'])){
 			
 			$sq="UPDATE customer
 			SET CustName='$fullname',Address='$address',telephone='$telephone',Password='$pass' WHERE Username='".$_SESSION['us']."'";
-			mysqli_query($conn,$sq) or die(mysqli_error($conn));
+			pg_query($conn,$sq) or die(pg_error($conn));
 		}
 		//Customer does not changes password
 		else {
 			$sq="UPDATE customer
 			SET CustName='$fullname',Address='$address',telephone='$telephone',Password='$pass' WHERE Username='".$_SESSION['us']."'";
-			mysqli_query($conn,$sq) or die(mysqli_error($conn));
+			pg_query($conn,$sq) or die(pg_error($conn));
 		}
 		echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
 	}else {
