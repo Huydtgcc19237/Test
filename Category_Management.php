@@ -41,7 +41,7 @@
 			<tbody>
             <?php
             $No=1;
-            $result=pg_query($conn,"Select * from category");
+            $result=pg_query("Select * from category");
             while($row=pg_fetch_array($result))
             {
             ?>
