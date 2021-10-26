@@ -2,8 +2,8 @@
 //Get custmer information
 $query = "SELECT CustName, Address, email, telephone 
 FROM customer WHERE Username ='" . $_SESSION["us"]."'";
-$result = mysqli_query($conn,$query) or die(mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$result = pg_query($conn,$query) or die(pg_error($conn));
+$row = pg_fetch_array($result, pg_ASSOC);
 
 $us = $_SESSION["us"];
 $email = $row["email"];
