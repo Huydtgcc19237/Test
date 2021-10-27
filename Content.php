@@ -4,7 +4,7 @@ include_once("connection.php");
    <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-left">
-                <img src="images/banner1.jpg" alt="">
+                <img src="images/b1.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
