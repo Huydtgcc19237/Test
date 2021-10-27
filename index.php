@@ -256,7 +256,7 @@
     <!-- Start copyright  -->
     <div class="footer-copyright">
         <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#"> MAVERIK STUDIO</a> Design By :
-            <a href="https://www.facebook.com/Maverik-Studio-108431117661053">MarverikTeam</a></p>
+            <a href="https://www.facebook.com/Maverik-Studio-108431117661053">ThanhHúy</a></p>
     </div>
     <!-- End copyright  -->
 
