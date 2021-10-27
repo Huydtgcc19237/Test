@@ -16,7 +16,7 @@ include_once("connection.php");
                 </div>
             </li>
             <li class="text-center">
-                <img src="images/banner7.jpg" alt="">
+                <img src="images/b2.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -28,7 +28,7 @@ include_once("connection.php");
                 </div>
             </li>
             <li class="text-right">
-                <img src="images/banner6.jpg" alt="">
+                <img src="images/b3.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
