@@ -92,6 +92,7 @@
                               <li><a href="?page=category_management">Category</a></li>
                               <li><a href="?page=product_management">Product</a></li>
                               <li><a href="?page=order">Order</a></li>
+                              <li><a href="?page=Shop_Manage">Shop</a></li>
                         </ul>
                         </li>
                         <?php }
