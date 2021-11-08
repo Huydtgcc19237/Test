@@ -3,7 +3,7 @@
     {
 ?>
 <form name="frm" method="post">
-    <h2 style="text-align: center;">Management Order</h2>
+    <h2 style="text-align: center;">Management Order Details</h2>
     <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -21,7 +21,7 @@
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = pg_query( "SELECT * FROM orders ") 
+                $result = pg_query( "SELECT * FROM orderdetails ") 
                         or die(pg_error());
                 while($row=pg_fetch_array($result))
                 {
