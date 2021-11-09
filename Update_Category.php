@@ -27,10 +27,10 @@
 		}
 		else{
 			$sq="select * from category where cat_id='$id' and cat_name='$name'";
-			$result=pg_query($sq);
-			if(pg_num_rows($result)==0)
+			$result=pg_query($conn,$sq);
+			if(pg_num_rows($conn,$result)==0)
 			{
-				pg_query("Update category set Cat_name='$name', cat_Dec='$des' where cat_id ='$id'");
+				pg_query($conn,"Update category set Cat_name='$name', cat_Dec='$des' where cat_id ='$id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
 			else
