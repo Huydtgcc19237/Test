@@ -4,15 +4,14 @@
 <?php
 include_once("connection.php");
 function bind_Category_List(){
-	$sqlstring="select cat_id, cat_name from category";
-	$result=pg_query($sqlstring);
-	echo "<select name = 'CategoryList' class='form-control'>
-		<option value='0'>Choose category</option>";
-		while($row= pg_fetch_array($result))
-		{
-			echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
-		} 
-		echo "</select>";
+	$sqlstring ="SELECT cat_id, cat_name from category";
+	$result= pg_query($Connect, $sqlstring);
+	echo"<SELECT name ='CategoryList'class='form-control '
+			<option value='0'>Choose category</option>";
+			while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+				echo"<OPTION value='".$row['cat_id']."'>".$row['cat_name']. "</option>";
+			}
+			echo"</select>";
 
 }
 ?>
@@ -51,15 +50,17 @@ if(isset($_POST["btnAdd"]))
 		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
 		if($pic['size']<614400)
 		{
-			$sq="SELECT * FROM product WHERE product_id ='$id' OR product_name ='$proname'";
-			$result=pg_query($sq);
-			if(pg_num_rows($result)==0){
-				copy($pic['tmp_name'],"images/".$pic['name']);
-				$filePic=$pic['name'];
-				$sqlstring="Insert into product(
-					product_id, product_name, Price, smalldesc, detaildesc, pro_qty, pro_image, cat_id, shop_id) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-					pg_query($Connect,$sqlstring) or die(pg_error());
-					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+			$sq="SELECT * from product where product_id='$id'or product_name='$proname'";
+			$result= pg_query($Connect,$sq);
+
+			if(pg_num_rows($result)==0)
+			{
+				copy($pic['tmp_name'],"ATNtoy/".$pic['name']);
+						$filePic =$pic['name'];
+						$sqlstring="INSERT INTO product(product_id, product_name, price, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id)
+							VALUES('$id','$proname', $price,'$short','$detail','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
+						pg_query($conn, $sqlstring);
+						echo'<li>You have add successfully</li>';
 			}
 			else{
 				echo "<li>Duplicate product ID or Name</li>";
