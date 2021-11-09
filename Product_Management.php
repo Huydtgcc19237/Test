@@ -37,20 +37,20 @@
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
                     $sq="SELECT Pro_image FROM product WHERE Product_ID='$id'";
-                    $res=mysqli_query($conn,$sq);
-                    $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
+                    $res=pg_query($conn,$sq);
+                    $row=pg_fetch_array($res);
                     $filePic=$row['Pro_image'];
                     unlink("images/".$filePic);
-                    mysqli_query($conn,"delete from product where Product_ID='$id'");
+                    pg_query($conn,"delete from product where Product_ID='$id'");
                 }
             }
             ?>
             
             <?php
 			$No=1;
-            $result=mysqli_query($conn,"Select Product_ID, Product_Name, Price, Pro_qty,Pro_image,Cat_Name from product a, category b
+            $result=pg_query($conn,"Select Product_ID, Product_Name, Price, Pro_qty,Pro_image,Cat_Name from product a, category b
             where a.Cat_ID=b.Cat_ID Order by ProDate DESC");
-            while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){	
+            while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
