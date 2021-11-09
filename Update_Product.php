@@ -7,34 +7,34 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 	<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
 <?php
 	include_once("connection.php");
-	function bind_Category_List($conn,$selectedValue){
-		$sqlstring="SELECT Cat_ID, Cat_Name from category";
+	function bind_Category_List($selectedValue){
+		$sqlstring="SELECT cat_id, cat_name from category";
 		$result=pg_query($sqlstring);
 		echo"<Select name='CategoryList' class='form-control'>
 			<option value='0'>Choose category</option>";
 			while($row=pg_fetch_array($result)){
-				if($row['Cat_ID']==$selectedValue){
-					echo"<option value='". $row['Cat_ID']."' selected>".$row['Cat_Name']."</option>";
+				if($row['cat_id']==$selectedValue){
+					echo"<option value='". $row['cat_id']."' selected>".$row['Cat_Name']."</option>";
 				}
 				else{
-					echo"<option value='". $row['Cat_ID']."'>".$row['Cat_Name']."</option>";
+					echo"<option value='". $row['cat_id']."'>".$row['Cat_Name']."</option>";
 				}
 			}
 	echo"</select>";
 	}
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
-		$sqlstring="SELECT Product_Name, Price, SmallDesc, DetailDesc, ProDate, Pro_qty,
-		Pro_image, Cat_ID from product where Product_ID='$id'";
+		$sqlstring="SELECT product_name, price, smalldesc, detaildesc, proDate, pro_qty,
+		pro_image, cat_id from product where product_id='$id'";
 		$result=pg_query($sqlstring);
 		$row=pg_fetch_array($result);
-		$proname=$row["Product_Name"];
-		$short=$row['SmallDesc'];
-		$detail=$row['DetailDesc'];
-		$price=$row['Price'];
-		$qty=$row['Pro_qty'];
-		$pic=$row['Pro_image'];
-		$category=$row['Cat_ID'];
+		$proname=$row["product_name"];
+		$short=$row['smalldesc'];
+		$detail=$row['detaildesc'];
+		$price=$row['price'];
+		$qty=$row['pro_qty'];
+		$pic=$row['pro_image'];
+		$category=$row['cat_id'];
 	
 ?>
 <div class="container">
@@ -58,7 +58,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
                 <div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Product category(*):  </label>
 							<div class="col-sm-10">
-							    <?php bind_Category_List($conn, $category); ?>
+							    <?php bind_Category_List($category); ?>
 							</div>
                 </div>  
                           
