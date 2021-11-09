@@ -49,7 +49,7 @@
             <?php
 			$No=1;
             $result=pg_query($conn,"Select Product_ID, Product_Name, Price, Pro_qty,Pro_image,Cat_Name from product a, category b
-            where a.Cat_ID=b.Cat_ID Order by ProDate DESC");
+            where a.Cat_ID=b.Cat_ID ORDER BY product_id ASC");
             while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
