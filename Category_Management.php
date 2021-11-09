@@ -45,7 +45,7 @@
             <?php
             $No=1;
             $result=pg_query("select * from category");
-            while($row=pg_fetch_row($result))
+            while($row=pg_fetch_array($result))
             {
                 var_dump($row);
             ?>
