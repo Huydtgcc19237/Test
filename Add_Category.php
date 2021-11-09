@@ -21,16 +21,12 @@
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$id=htmlspecialchars(pg_escape_string($Connect,$id));
-			$name=htmlspecialchars(pg_escape_string($Connect,$name));
-			$des=htmlspecialchars(pg_escape_string($Connect,$des));
 			$sq="Select * from category where Cat_ID='$id' or Cat_Name='$name'";
 			$result=pg_query($Connect,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query($Connect,"INSERT INTO category (cat_id, cat_name,cat_desc)
+				pg_query($Connect,"INSERT INTO category (cat_id, cat_name, cat_desc)
 				VALUES ('$id','$name','$des')");
-				<h1>AAAAAAAA</h>
 				echo '<meta http-equiv="refresh" content="0,URL=?page=category_management"/>';
 			}
 			else
