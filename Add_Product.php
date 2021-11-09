@@ -50,14 +50,14 @@ if(isset($_POST["btnAdd"]))
 		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
 		if($pic['size']<614400)
 		{
-			$sq="SELECT * FROM product WHERE Product_ID ='$id' OR Product_Name ='$proname'";
-			$result=pg_query($Connect,$sq);
+			$sq="SELECT * FROM product WHERE product_id ='$id' OR product_name ='$proname'";
+			$result=pg_query($sq);
 			if(pg_num_rows($result)==0){
 				copy($pic['tmp_name'],"images/".$pic['name']);
 				$filePic=$pic['name'];
 				$sqlstring="Insert into product(
-					product_id, Product_Name,Price,SmallDesc,DetailDesc,Pro_qty,Pro_image, Cat_ID, shop_id) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-					pg_query($Connect,$sqlstring) or die(pg_error());
+					product_id, product_name, Price, smalldesc, detaildesc, pro_qty, pro_image, cat_id, shop_id) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
+					pg_query($sqlstring) or die(pg_error());
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{
