@@ -17,7 +17,7 @@
         if(isset($_GET["function"])=='del'){
             if(isset($_GET["id"])){
                 $id=$_GET["id"];
-                pg_query("delete from category where Cat_ID='$id'");
+                pg_query($conn,"delete from category where Cat_ID='$id'");
             }
         }
         ?>
@@ -41,7 +41,7 @@
 			<tbody>
             <?php
             $No=1;
-            $result=pg_query($conn,"SELECT * FROM category1");
+            $result=pg_query($conn,"SELECT * FROM public.category1");
             while($row=pg_fetch_array($result))
             {
             ?>
