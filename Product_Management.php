@@ -48,8 +48,7 @@
             
             <?php
 			$No=1;
-            $result=pg_query($Connect,"Select product_id, product_name, price, pro_qty,pro_image,cat_name from product a, category b
-            where a.cat_id=b.cat_id ORDER BY ProDate DESC");
+            $result=pg_query($Connect,"Select product_id, product_name, price, pro_qty,pro_image,cat_name from product");
             while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
