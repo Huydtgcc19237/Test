@@ -3,9 +3,9 @@
 	<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
 <?php
 include_once("connection.php");
-function bind_Category_List(){
-	$sqlstring="select Cat_ID, Cat_Name from category";
-	$result=pg_query($sqlstring);
+function bind_Category_List($Connect){
+	$sqlstring="select cat_id, cat_name from category";
+	$result=pg_query($Connect,$sqlstring);
 	echo "<select name='CategoryList' class='form-control'>
 		<option value='0'>Choose category</option>";
 		while($row= pg_fetch_array($result)){
@@ -50,14 +50,14 @@ if(isset($_POST["btnAdd"]))
 		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
 		if($pic['size']<614400)
 		{
-			$sq="SELECT * FROM product WHERE Product_ID='$id' OR Product_Name='$proname'";
+			$sq="SELECT * FROM product WHERE Product_ID ='$id' OR Product_Name ='$proname'";
 			$result=pg_query($Connect,$sq);
 			if(pg_num_rows($result)==0){
 				copy($pic['tmp_name'],"images/".$pic['name']);
 				$filePic=$pic['name'];
 				$sqlstring="Insert into product(
-					Product_ID, Product_Name,Price,SmallDesc,DetailDesc,ProDate,Pro_qty,Pro_image, Cat_ID) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-					pg_query($sqlstring) or die(pg_error());
+					product_id, Product_Name,Price,SmallDesc,DetailDesc,Pro_qty,Pro_image, Cat_ID, shop_id) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
+					pg_query($Connect,$sqlstring) or die(pg_error());
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{
