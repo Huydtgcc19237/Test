@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Maverik.com</title>
+    <title>Maveriktoy.com</title>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -256,8 +256,8 @@
 
     <!-- Start copyright  -->
     <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#"> MAVERIK STUDIO</a> Design By :
-            <a href="https://www.facebook.com/Maverik-Studio-108431117661053">ThanhHúy</a></p>
+        <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#"> MAVERIK TOY</a> Design By :
+            <a href="https://www.facebook.com/Maverik-Studio-108431117661053">ThanhHuy</a></p>
     </div>
     <!-- End copyright  -->
 
