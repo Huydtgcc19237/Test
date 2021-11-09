@@ -21,11 +21,11 @@
 			echo "<ul>$err</ul>";
 		}
 		else{
-			$id=htmlspecialchars(pg_real_escape_string($id));
-			$name=htmlspecialchars(pg_real_escape_string($name));
-			$des=htmlspecialchars(pg_real_escape_string($des));
+			$id=htmlspecialchars(pg_real_escape_string($conn,$id));
+			$name=htmlspecialchars(pg_real_escape_string($conn,$name));
+			$des=htmlspecialchars(pg_real_escape_string($conn,$des));
 			$sq="SELECT * FROM category WHERE cat_id='$id or cat_names='$name'";
-			$result=pg_query($sq);
+			$result=pg_query(($conn,$sq);
 			if(pg_num_rows($result)==0)
 			{
 				pg_query("Insert into category (cat_id, cat_name, cat_des) values ('$id','$name','$des')");
