@@ -8,9 +8,9 @@
 			$id=$_GET["id"];
 			$result=pg_query("select * from category where Cat_ID='$id'");
 			$row=pg_fetch_array($result);
-			$cat_id=$row['Cat_ID'];
-			$cat_name=$row['Cat_Name'];
-			$cat_dec=$row['Cat_Dec'];
+			$cat_id=$row['cat_id'];
+			$cat_name=$row['cat_names'];
+			$cat_dec=$row['cat_desc'];
 		
     ?>
 	<?php if(isset($_POST["btnUpdate"]))
@@ -30,7 +30,7 @@
 			$result=pg_query($conn,$sq);
 			if(pg_num_rows($conn,$result)==0)
 			{
-				pg_query($conn,"Update category set Cat_name='$name', Cat_Desc='$des' where Cat_ID ='$id'");
+				pg_query($conn,"Update category set cat_name='$name', cat_desc='$des' where cat_id ='$id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
 			else
