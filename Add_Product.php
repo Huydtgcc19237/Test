@@ -6,9 +6,10 @@ include_once("connection.php");
 function bind_Category_List(){
 	$sqlstring="select cat_id, cat_name from category";
 	$result=pg_query($sqlstring);
-	echo "<select name='CategoryList' class='form-control'>
+	echo "<select name = 'CategoryList' class='form-control'>
 		<option value='0'>Choose category</option>";
-		while($row= pg_fetch_array($result)){
+		while($row= pg_fetch_array($result))
+		{
 			echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
 		} 
 		echo "</select>";
@@ -57,7 +58,7 @@ if(isset($_POST["btnAdd"]))
 				$filePic=$pic['name'];
 				$sqlstring="Insert into product(
 					product_id, product_name, Price, smalldesc, detaildesc, pro_qty, pro_image, cat_id, shop_id) values ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-					pg_query($sqlstring) or die(pg_error());
+					pg_query($Connect,$sqlstring) or die(pg_error());
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{
