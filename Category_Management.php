@@ -13,11 +13,11 @@
         }
         </script>
          <?php
-         include_once("connection.php");
+        include_once("connection.php");
         if(isset($_GET["function"])=='del'){
             if(isset($_GET["id"])){
                 $id=$_GET["id"];
-                pg_query($conn,"delete from category where Cat_ID='$id'");
+                pg_query("delete from category where Cat_ID='$id'");
             }
         }
         ?>
@@ -40,11 +40,8 @@
 
 			<tbody>
             <?php
-            $conn = pg_connect("postgres://kpknfasetxhine:67da40fb98b4bb98a481cebe3383cabd50275b3ade3044685433cba0823fb8f5@ec2-3-213-41-172.compute-1.amazonaws.com:5432/d9dr4kegrianvb")
-            or die("Not able to connect");
             $No=1;
-            $query ="SELECT * FROM category1";
-            $result=pg_query($query);
+            $result=pg_query("SELECT * FROM category");
             while($row=pg_fetch_array($result))
             {
             ?>
@@ -52,7 +49,7 @@
               <td class="cotCheckBox"><?php echo $No;?></td>
               <td><?php echo $row["Cat_Name"];?></td>
               <td><?php echo $row["Cat_Des"];?></td>
-              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["Cat_ID"];?>">
+              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["cat_id"];?>">
               <img src='images/edit.png' border='0'  /></a></td>
               <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["cat_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             </tr>
