@@ -26,14 +26,16 @@
 			$des=htmlspecialchars(pg_real_escape_string($conn,$des));
 			$sq="select * from category where cat_id='$id or cat_name='$name'";
 			$result=pg_query($conn,$sq);
-			if(pg_num_rows($result)==0)
+			var_dump($result);
+			/*if(pg_num_rows($result)==0)
 			{
 				pg_query($conn,"insert into category (cat_id, cat_name, cat_des) values ('$id','$name','$des')");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
-			else{
+			else
+			{
 				echo"<li>Dublicate category ID or Name";
-			}
+			}*/
 		}
 	}
 	?>
