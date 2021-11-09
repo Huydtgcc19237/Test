@@ -29,7 +29,7 @@
 			if(pg_num_rows($result)==0)
 			{
 				pg_query($conn,"Insert into category (Cat_ID, Cat_name, Cat_Des) values ('$id','$name','$des')");
-				echo '<meta http-equiv="refresh" content="0; URL=?page=Category_management"/>';
+				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
 			else{
 				echo"<li>Dublicate category ID or Name";
@@ -64,7 +64,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new"/>
-                              <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=Category_management'" />
+                              <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=category_management'" />
                               	
 						</div>
 					</div>
