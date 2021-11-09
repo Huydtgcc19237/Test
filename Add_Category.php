@@ -2,45 +2,41 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	 <div id="top">   
-        <?php
+	    
+	<?php
 	include_once("connection.php");
 	if(isset($_POST["btnAdd"]))
 	{
-		$id =$_POST["txtID"];
-		$name = $_POST["txtName"];
-		$des = $_POST["txtDes"];
+		$id=$_POST["txtID"];
+		$name=$_POST["txtName"];
+		$des=$_POST["txtDes"];
 		$err="";
 		if($id==""){
-			$err.="<li>Enter Category ID, please</li>";
+			$err.="<li>Enter Category ID, Please</li>";
 		}
 		if($name==""){
-			$err.="<li>Enter Category Name, please</li>";
+			$err.="<li>Enter Category Name, Please</li>";
 		}
 		if($err!=""){
-			echo"<ul>$err</ul>";
+			echo "<ul>$err</ul>";
 		}
 		else{
 			$id=htmlspecialchars(pg_escape_string($conn,$id));
 			$name=htmlspecialchars(pg_escape_string($conn,$name));
 			$des=htmlspecialchars(pg_escape_string($conn,$des));
-			$sq="Select * from category where cat_id='$id' or cat_id='$name'";
+			$sq="SELECT * FROM category WHERE Cat_ID='$id or Cat_Name='$name'";
 			$result=pg_query($conn,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query($conn,"INSERT INTO category (cat_id, cat_name,cat_dess)
-				VALUES ('$id','$name','$des')");
-				echo '<meta http-equiv="refresh" content="0,URL=?page=category_management"/>';
+				pg_query($conn,"Insert into category (Cat_ID, Cat_name, Cat_Des) values ('$id','$name','$des')");
+				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
-			else
-			{
-				echo "<li>Duplication category ID or Name</li>";
+			else{
+				echo"<li>Dublicate category ID or Name";
 			}
 		}
-
 	}
-
-        ?>
+	?>
 
 <div class="container">
 	<h2>Adding Category</h2>
@@ -67,11 +63,10 @@
                     
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new" />
+						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new"/>
                               <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=category_management'" />
                               	
 						</div>
 					</div>
 				</form>
-	</div>
 	</div>
