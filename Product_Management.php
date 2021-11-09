@@ -37,7 +37,7 @@
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
                     $sq="SELECT Pro_image FROM product WHERE Product_ID='$id'";
-                    $res=pg_query($conn,$sq);
+                    $res=pg_query($connect,$sq);
                     $row=pg_fetch_array($res);
                     $filePic=$row['Pro_image'];
                     unlink("images/".$filePic);
