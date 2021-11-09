@@ -38,18 +38,24 @@
                     $id=$_GET["id"];
                     $sq="SELECT pro_image FROM product WHERE product_id='$id'";
                     $res=pg_query($Connect,$sq);
-                    $row=pg_fetch_array($res);
-                    $filePic=$row['pro_image'];
-                    unlink("images/".$filePic);
+                    $row= pg_fetch_array($res, NULL, PGSQL_ASSOC);
+                    $filePic= $row['pro_image'];
                     pg_query($Connect,"delete from product where product_id='$id'");
+                    echo '<meta http-equiv="refresh" content="0;URL =?page=product_management"/>'
                 }
             }
             ?>
             
             <?php
 			$No=1;
-            $result=pg_query($Connect,"Select * from product");
-            while($row=pg_fetch_array($result)){	
+            if{
+                $result=pg_query($Connect,"SELECT product.product_id, product.product_name, product.price, product.pro_qty, product.pro_image, category.cat_name 
+                from product, category where product.cat_id = category.cat_id and '$id'=category.cat_id");
+            }
+            else{
+                $result = pg_query($conn,"SELECT product.product_id, product.product_name, product.price, product.pro_qty, product.pro_image, category.cat_name 
+                    from product, category where product.cat_id = category.cat_id ");
+            while($row=pg_fetch_array($result, NULL, PGSQL_ASSOC)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
