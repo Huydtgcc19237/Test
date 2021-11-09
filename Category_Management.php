@@ -17,7 +17,8 @@
         include_once("connection.php");
         if(isset($_GET["function"])=='del')
         {
-            if(isset($_GET["id"])){
+            if(isset($_GET["id"]))
+            {
                 $id=$_GET["id"];
                 pg_query("delete from category where Cat_ID='$id'");
             }
@@ -55,7 +56,9 @@
               <img src='images/edit.png' border='0'  /></a></td>
               <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["cat_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             </tr>
-            <?php $No++;}?>
+            <?php
+             $No++;}
+             ?>
 			</tbody>
         </table>  
         
