@@ -21,7 +21,11 @@
 			echo"<ul>$err</ul>";
 		}
 		else{
-			echo $name;
+			$sq=pg_query($conn, "Insert into category (cat_id, cat_name, cat_desc) values ('$id','$name','$des')");
+			$check = pg_num_rows($sq);
+			if($check==0){
+				<h1>AAAAAAAAaa</h1>
+			}
 		}
 		
 
