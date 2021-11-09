@@ -30,7 +30,7 @@
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("Update category set Cat_name='$name', Cat_Des='$des' where Cat_ID='$id' ");
+				pg_query("Update category set Cat_name='$name', Cat_Dec='$des' where Cat_ID='$id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
 			else{
