@@ -13,6 +13,7 @@
         }
         </script>
          <?php
+         include_once("connection.php");
         $conn = pg_connect("postgres://kpknfasetxhine:67da40fb98b4bb98a481cebe3383cabd50275b3ade3044685433cba0823fb8f5@ec2-3-213-41-172.compute-1.amazonaws.com:5432/d9dr4kegrianvb")
         or die("Not able to connect");
         if(isset($_GET["function"])=='del'){
@@ -41,8 +42,6 @@
 
 			<tbody>
             <?php
-            $conn = pg_connect("postgres://kpknfasetxhine:67da40fb98b4bb98a481cebe3383cabd50275b3ade3044685433cba0823fb8f5@ec2-3-213-41-172.compute-1.amazonaws.com:5432/d9dr4kegrianvb")
-            or die("Not able to connect");
             $No=1;
             $result=pg_query($conn,"SELECT * FROM public.category1");
             while($row=pg_fetch_array($result))
