@@ -3,9 +3,9 @@
 	<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
 <?php
 include_once("connection.php");
-function bind_Category_List($Connect){
+function bind_Category_List(){
 	$sqlstring="select cat_id, cat_name from category";
-	$result=pg_query($Connect,$sqlstring);
+	$result=pg_query($sqlstring);
 	echo "<select name='CategoryList' class='form-control'>
 		<option value='0'>Choose category</option>";
 		while($row= pg_fetch_array($result)){
