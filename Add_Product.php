@@ -51,7 +51,7 @@ if(isset($_POST["btnAdd"]))
 		if($pic['size']<614400)
 		{
 			$sq="SELECT * FROM product WHERE Product_ID='$id' OR Product_Name='$proname'";
-			$result=pg_query($sq);
+			$result=pg_query($Connect,$sq);
 			if(pg_num_rows($result)==0){
 				copy($pic['tmp_name'],"images/".$pic['name']);
 				$filePic=$pic['name'];
