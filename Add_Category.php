@@ -30,7 +30,8 @@
 			{
 				pg_query($conn,"INSERT INTO category (cat_id, cat_name,cat_desc)
 				VALUES ('$id','$name','$des')");
-				echo '<meta http-equiv="refresh" content="0,URL=?page=category_management"/>';
+				<h1>AAAAAAAA</h1>
+				/*echo '<meta http-equiv="refresh" content="0,URL=?page=category_management"/>';*/
 			}
 			else
 			{
