@@ -28,12 +28,12 @@
             ?>
                     <tr>
                         <td style='text-align:center'><?php echo $No;?></td>
-                        <td><?php echo $row["OrderID"];?></td>
+                        <td><?php echo $row["orderid"];?></td>
                         <td><?php echo $row["username"];?></td>
-                        <td><?php echo $row["OrderDate"];?></td>
-                        <td><?php echo $row["DeliveryDate"];?></td>
-                        <td><?php echo $row["Delivery_loca"];?></td>
-                        <td><?php echo $row["Payment"];?></td>
+                        <td><?php echo $row["orderdate"];?></td>
+                        <td><?php echo $row["deliverydate"];?></td>
+                        <td><?php echo $row["delivery_loca"];?></td>
+                        <td><?php echo $row["payment"];?></td>
             <?php
                 $No++;
                 }
