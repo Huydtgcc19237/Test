@@ -26,7 +26,7 @@
 			$dec=htmlspecialchars(pg_escape_string($conn,$des));
 			$sq="select * from category where cat_id='$id or cat_name='$name'";
 			$result=pg_query($conn,$sq);
-			if(pg_num_rows($result)==0)
+			if(pg_num_rows($conn,$result)==0)
 			{
 				pg_query($conn,"INSERT INTO category (cat_id, cat_name, cat_des) VALUES ('$id','$name','$des')");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
