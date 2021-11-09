@@ -24,11 +24,11 @@
 			$id=htmlspecialchars(pg_real_escape_string($id));
 			$name=htmlspecialchars(pg_real_escape_string($name));
 			$des=htmlspecialchars(pg_real_escape_string($des));
-			$sq="SELECT * FROM category WHERE Cat_ID='$id or Cat_Name='$name'";
+			$sq="SELECT * FROM category WHERE cat_id='$id or cat_names='$name'";
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("Insert into category (Cat_ID, Cat_name, Cat_Des) values ('$id','$name','$des')");
+				pg_query("Insert into category (cat_id, cat_name, cat_des) values ('$id','$name','$des')");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
 			else{
