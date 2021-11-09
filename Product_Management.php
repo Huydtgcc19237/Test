@@ -54,11 +54,11 @@
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
-              <td ><?php echo $row["Product_ID"];  ?></td>
-              <td><?php echo $row["Product_Name"];  ?></td>
-              <td><?php echo $row["Price"];   ?></td>
-              <td ><?php echo $row["Pro_qty"]; ?></td>
-              <td><?php echo $row["Cat_Name"]; ?></td>
+              <td ><?php echo $row['Product_ID'];  ?></td>
+              <td><?php echo $row['Product_Name'];  ?></td>
+              <td><?php echo $row['Price'];   ?></td>
+              <td ><?php echo $row['Pro_qty']; ?></td>
+              <td><?php echo $row['Cat_Name']; ?></td>
              <td align='center' class='cotNutChucNang'>
                  <img src='images/<?php echo $row['Pro_image'] ?>' border='0' width="50" height="50"  /></td>
              <td align='center' class='cotNutChucNang'><a href="?page=update_product&&id=<?php echo $row["Product_ID"];?>"><img src='images/edit.png' border='0'/></a></td>
