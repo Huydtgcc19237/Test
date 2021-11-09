@@ -20,24 +20,7 @@
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
-		else{
-			$id=htmlspecialchars(pg_escape_string($conn,$id));
-			$name=htmlspecialchars(pg_escape_string($conn,$name));
-			$des=htmlspecialchars(pg_escape_string($conn,$des));
-			$sq="Select * from category where Cat_ID='$id' or Cat_Name='$name'";
-			$result=pg_query($conn,$sq);
-			if(pg_num_rows($result)==0)
-			{
-				pg_query($conn,"INSERT INTO category (cat_id, cat_name,cat_desc)
-				VALUES ('$id','$name','$des')");
-				<h1>AAAAAAAA</h1>
-				/*echo '<meta http-equiv="refresh" content="0,URL=?page=category_management"/>';*/
-			}
-			else
-			{
-				echo "<li>Duplication category ID or Name</li>";
-			}
-		}
+		
 
 	}
 
