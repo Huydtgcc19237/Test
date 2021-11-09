@@ -48,17 +48,17 @@
             
             <?php
 			$No=1;
-            $result=pg_query("Select product_id, product_name, price, Pro_qty, cro_image, cat_Name from product a, category b
+            $result=pg_query("Select product_id, product_name, price, pro_qty, pro_image, cat_Name from product a, category b
             where a.Cat_ID=b.Cat_ID");
             while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
-              <td ><?php echo $row['Product_ID'];  ?></td>
-              <td><?php echo $row['Product_Name'];  ?></td>
-              <td><?php echo $row['Price'];   ?></td>
-              <td ><?php echo $row['Pro_qty']; ?></td>
-              <td><?php echo $row['Cat_Name']; ?></td>
+              <td ><?php echo $row['product_id'];  ?></td>
+              <td><?php echo $row['product_name'];  ?></td>
+              <td><?php echo $row['price'];   ?></td>
+              <td ><?php echo $row['pro_qty']; ?></td>
+              <td><?php echo $row['cat_name']; ?></td>
              <td align='center' class='cotNutChucNang'>
                  <img src='images/<?php echo $row['Pro_image'] ?>' border='0' width="50" height="50"  /></td>
              <td align='center' class='cotNutChucNang'><a href="?page=update_product&&id=<?php echo $row["Product_ID"];?>"><img src='images/edit.png' border='0'/></a></td>
