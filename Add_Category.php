@@ -21,7 +21,7 @@
 			echo"<ul>$err</ul>";
 		}
 		else{
-			
+			echo $name;
 		}
 		
 
