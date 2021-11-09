@@ -5,10 +5,10 @@
 include_once("connection.php");
 function bind_Category_List(){
 	$sqlstring ="SELECT cat_id, cat_name from category";
-	$result= pg_query($Connect, $sqlstring);
+	$result= pg_query($sqlstring);
 	echo"<SELECT name ='CategoryList'class='form-control '
 			<option value='0'>Choose category</option>";
-			while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
+			while($row = pg_fetch_array($result)){
 				echo"<OPTION value='".$row['cat_id']."'>".$row['cat_name']. "</option>";
 			}
 			echo"</select>";
