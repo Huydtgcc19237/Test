@@ -50,8 +50,8 @@
             ?>
 			<tr>
               <td class="cotCheckBox"><?php echo $No;?></td>
-              <td><?php echo $row["Cat_Name"];?></td>
-              <td><?php echo $row["Cat_Des"];?></td>
+              <td><?php echo $row[1];?></td>
+              <td><?php echo $row[2];?></td>
               <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["cat_id"];?>">
               <img src='images/edit.png' border='0'  /></a></td>
               <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["cat_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
