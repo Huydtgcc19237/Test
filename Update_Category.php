@@ -26,14 +26,15 @@
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$sq="select * from category where Cat_ID!='$id' and Cat_Name='$name'";
+			$sq="select * from category where cat_id='$id' and cat_name='$name'";
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("Update category set Cat_name='$name', at_Dec='$des' where Cat_ID ='$id'");
+				pg_query("Update category set Cat_name='$name', cat_Dec='$des' where cat_id ='$id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
-			else{
+			else
+			{
 				echo "<li>Dublicate category Name</li>";
 			}
 		}
