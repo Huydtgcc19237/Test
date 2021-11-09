@@ -28,7 +28,7 @@
 			$result=pg_query($conn,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query($conn,"Insert into category (Cat_ID, Cat_name, Cat_Des) values ('$id','$name','$des')");
+				pg_query($conn,"Insert into category (Cat_ID, Cat_name, Cat_Dec) values ('$id','$name','$des')");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
 			}
 			else{
