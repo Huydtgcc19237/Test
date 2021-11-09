@@ -28,7 +28,7 @@
 		else{
 			$sq="select * from category where cat_id='$id' and cat_name='$name'";
 			$result=pg_query($Connect,$sq);
-			if(pg_num_rows($Connect,$result)==0)
+			if(pg_num_rows($result)==0)
 			{
 				pg_query($Connect,"Update category set cat_name='$name', cat_desc='$des' where cat_id ='$id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
