@@ -21,13 +21,12 @@
 			echo "<ul>$err</ul>";
 		}
 		else{
-			$id=htmlspecialchars(pg_real_escape_string($conn,$id));
-			$name=htmlspecialchars(pg_real_escape_string($conn,$name));
-			$des=htmlspecialchars(pg_real_escape_string($conn,$des));
+			$id=htmlspecialchars(pg_escape_string($conn,$id));
+			$name=htmlspecialchars(pg_escape_string($conn,$name));
+			$des=htmlspecialchars(pg_escape_string($conn,$des));
 			$sq="select * from category where cat_id='$id' or cat_name='$name'";
 			$result=pg_query($conn,$sq);
-			var_dump($result);
-			/*if(pg_num_rows($result)==0)
+			if(pg_num_rows($result)==0)
 			{
 				pg_query($conn,"insert into category (cat_id, cat_name, cat_des) values ('$id','$name','$des')");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=category_management"/>';
@@ -35,7 +34,7 @@
 			else
 			{
 				echo"<li>Dublicate category ID or Name";
-			}*/
+			}
 		}
 	}
 	?>
@@ -65,7 +64,7 @@
                     
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new"/>
+						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new" onclick="window.location='?page=category_management'/>
                               <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=category_management'" />
                               	
 						</div>
