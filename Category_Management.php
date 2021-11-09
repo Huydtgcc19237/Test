@@ -41,7 +41,7 @@
 			<tbody>
             <?php
             $No=1;
-            $result=pg_query("Select * from category");
+            $result=pg_query($conn,"SELECT * FROM category1");
             while($row=pg_fetch_array($result))
             {
             ?>
@@ -49,7 +49,7 @@
               <td class="cotCheckBox"><?php echo $No;?></td>
               <td><?php echo $row["Cat_Name"];?></td>
               <td><?php echo $row["Cat_Des"];?></td>
-              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["cat_id"];?>">
+              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["Cat_ID"];?>">
               <img src='images/edit.png' border='0'  /></a></td>
               <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["cat_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             </tr>
