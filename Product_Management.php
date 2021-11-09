@@ -36,34 +36,32 @@
             if(isset($_GET["function"])=="del"){
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
-                    $sq="SELECT pro_image FROM product WHERE product_id='$id'";
+                    $sq="SELECT Pro_image FROM product WHERE Product_ID='$id'";
                     $res=pg_query($Connect,$sq);
-                    $row= pg_fetch_array($res, NULL, PGSQL_ASSOC);
-                    $filePic= $row['pro_image'];
-                    pg_query($Connect,"delete from product where product_id='$id'");
-                    echo '<meta http-equiv="refresh" content="0;URL =?page=product_management"/>'
+                    $row=pg_fetch_array($res, PGSQL_ASSOC);
+                    $filePic=$row['Pro_image'];
+                    unlink("images/".$filePic);
+                    pg_query($Connect,"delete from product where Product_ID='$id'");
+                }
+                else{
+                    echo '<meta http-equiv="refresh" content="0;URL =?page=pm"/>'
                 }
             }
             ?>
             
             <?php
 			$No=1;
-            if{
-                $result=pg_query($Connect,"SELECT product.product_id, product.product_name, product.price, product.pro_qty, product.pro_image, category.cat_name 
-                from product, category where product.cat_id = category.cat_id and '$id'=category.cat_id");
-            }
-            else{
-                $result = pg_query($conn,"SELECT product.product_id, product.product_name, product.price, product.pro_qty, product.pro_image, category.cat_name 
-                    from product, category where product.cat_id = category.cat_id ");
-            while($row=pg_fetch_array($result, NULL, PGSQL_ASSOC)){	
+            $result = pg_query($conn,"SELECT product.product_id, product.product_name, product.price, product.pro_qty, product.pro_image, category.cat_name 
+                                    from product, category where product.cat_id = category.cat_id and '$id'=category.cat_id ");
+            while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
               <td ><?php echo $No; ?></td>
-              <td ><?php echo $row['product_id'];  ?></td>
-              <td><?php echo $row['product_name'];  ?></td>
-              <td><?php echo $row['price'];   ?></td>
-              <td ><?php echo $row['pro_qty']; ?></td>
-              <td><?php echo $row['cat_name']; ?></td>
+              <td ><?php echo $row['Product_ID'];  ?></td>
+              <td><?php echo $row['Product_Name'];  ?></td>
+              <td><?php echo $row['Price'];   ?></td>
+              <td ><?php echo $row['Pro_qty']; ?></td>
+              <td><?php echo $row['Cat_Name']; ?></td>
              <td align='center' class='cotNutChucNang'>
                  <img src='images/<?php echo $row['Pro_image'] ?>' border='0' width="50" height="50"  /></td>
              <td align='center' class='cotNutChucNang'><a href="?page=update_product&&id=<?php echo $row["Product_ID"];?>"><img src='images/edit.png' border='0'/></a></td>
