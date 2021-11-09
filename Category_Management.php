@@ -45,9 +45,9 @@
             <?php
             $No=1;
             $result=pg_query("select * from category");
-                    var_dump($result);
             while($row=pg_fetch_row($result))
             {
+                var_dump($row);
             ?>
 			<tr>
               <td class="cotCheckBox"><?php echo $No;?></td>
