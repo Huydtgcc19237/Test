@@ -22,19 +22,34 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 			}
 	echo"</select>";
 	}
+	function bind_shop_List($selectedValue){
+		$sqlstring="SELECT shop_id, shop_name from shop";
+		$result=pg_query($sqlstring);
+		echo"<Select name='ShopList' class='form-control'>
+			<option value='0'>Choose shop</option>";
+			while($row=pg_fetch_array($result)){
+				if($row['cat_id']==$selectedValue){
+					echo"<option value='". $row['shop_id']."' selected>".$row['shop_Name']."</option>";
+				}
+				else{
+					echo"<option value='". $row['shop_id']."'>".$row['shop_Name']."</option>";
+				}
+			}
+	echo"</select>";
+	}
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
-		$sqlstring="SELECT product_name, price, smalldesc, detaildesc, proDate, pro_qty,
-		pro_image, cat_id from product where product_id='$id'";
+		$sqlstring="SELECT product_name, pro_price, pro_desc , pro_qty,
+		pro_image, cat_id, shop_id from product where pro_id='$id'";
 		$result=pg_query($sqlstring);
 		$row=pg_fetch_array($result);
-		$proname=$row["product_name"];
-		$short=$row['smalldesc'];
-		$detail=$row['detaildesc'];
-		$price=$row['price'];
+		$proname=$row["pro_name"];
+		$prodesc=$row['pro_desc'];
+		$price=$row['pro_price'];
 		$qty=$row['pro_qty'];
 		$pic=$row['pro_image'];
 		$category=$row['cat_id'];
+		$shop=$row['shop_id'];
 	
 ?>
 <div class="container">
@@ -59,6 +74,12 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
                     <label for="" class="col-sm-2 control-label">Product category(*):  </label>
 							<div class="col-sm-10">
 							    <?php bind_Category_List($category); ?>
+							</div>
+                </div> 
+				<div class="form-group">   
+                    <label for="" class="col-sm-2 control-label">Shop(*):  </label>
+							<div class="col-sm-10">
+							    <?php bind_shop_List($shop); ?>
 							</div>
                 </div>  
                           
@@ -169,16 +190,15 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 			    if($pic['type']=="image/jpg" || $pic['type']=="image/jpeg" ||$pic['type']=="image/png"
 			        ||$pic['type']=="image/gif"){
 				    if($pic['size']<= 614400){
-					    $sq="SELECT * from product where Product_ID != '$id' and Product_Name='$proname'";
-					    $result=pg_query($conn,$sq);
+					    $sq="SELECT * from product where pro_id != '$id' and Pro_Name='$proname'";
+					    $result=pg_query($sq);
 					    if(pg_num_rows($result)==0){
 						        copy($pic['tmp_name'], "images/".$pic['name']);
 						        $filePic = $pic['name'];
-						        $sqlstring="UPDATE product set Product_Name='$proname', Price=$price, SmallDesc='$short',
-						        DetailDesc='$detail', Pro_qty=$qty,
-						        Pro_image='$filePic',Cat_ID='$category',
-						        ProDate='".date('Y-m-d H:i:s')."' WHERE Product_ID='$id'";
-						        pg_query($conn,$sqlstring);
+						        $sqlstring="UPDATE product set Pro_Name='$proname', pro_Price=$price,
+						        pro_Desc='$detail', Pro_qty=$qty,
+						        Pro_image='$filePic',Cat_ID='$category', shop_id'$shop' WHERE Pro_ID='$id'";
+						        pg_query($sqlstring);
 						        echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 					        }
 					        else{
@@ -194,13 +214,12 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 			        }		
 		    }
 		    else{
-				$sq="SELECT * from product where Product_ID != '$id' and Product_Name='$proname'";
+				$sq="SELECT * from product where Pro_ID != '$id' and Pro_Name='$proname'";
 				$result=pg_query($sq);
 				if(pg_num_rows($result)==0){
-					$sqlstring="UPDATE product set Product_Name='$proname',
-					Price=$price, SmallDesc='$short', DetailDesc='$detail',
-					Pro_qty=$qty, Cat_ID='$category',
-					ProDate='".date('Y-m-d H:i:s')."' WHERE Product_ID='$id'";
+					$sqlstring="UPDATE product set Pro_Name='$proname',
+					pro_Price=$price, pro_Desc='$detail',
+					Pro_qty=$qty, Cat_ID='$category', shop_id'$shop' WHERE Pro_ID='$id'";
 					pg_query($sqlstring);
                     echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 				}
