@@ -36,7 +36,6 @@
             }
             </script>
             <?php
-            include_once('connection.php');
             if(isset($_GET["function"])=="del"){
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
@@ -52,21 +51,18 @@
                 <?php
 				include_once("connection.php");
                 $No=1;
-                $result=pg_query("select pro_id,,pro_name, pro_desc, pro_image, pro_price, pro_qty, shop_id, cat_id
-                From product a, category b , manager_shop c Where a.cat_id = b.cat_id and a.shop_id = c.shop_id");
+                $result=pg_query("SELECT product.pro_id, product.pro_name, product.pro_price, product.pro_qty, product.pro_image, category.cat_id
+                from product, category where product.cat_id = category.cat_id");
                 while($row=pg_fetch_array($result))
                 ?>
 			<tr>
               <td ><?php echo $No; ?></td>
               <td ><?php echo $row['pro_id']; ?></td>
               <td><?php echo $row['pro_name']; ?></td>
-              <td><?php echo $row['price']; ?></td>
+              <td><?php echo $row['pro_price']; ?></td>
               <td ><?php echo $row['pro_qty']; ?></td>
               <td><?php echo $row['cat_id']; ?></td>
               <td><?php echo $row['shop_id']; ?></td>
-                <td>
-                    <?php echo $row['shop_name']; ?>
-                </td>
              <td align='center' class='cotNutChucNang'>
                  <img src='images/<?php echo $row['pro_image']; ?>' border='0' width="50" height="50"  /></td>
              <td align='center'><a href="?page=update_product&&id=<?php echo $row["pro_id"]; ?>"><img src='images/edit.png' border='0'/></a></td>
