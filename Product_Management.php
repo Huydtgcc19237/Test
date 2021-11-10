@@ -48,8 +48,7 @@
             <?php
 			$No=1;
             $result=pg_query($conn,"select Pro_ID, Pro_Name,Pro_Price,Pro_qty,Pro_image,Cat_Name, shop_name
-                From product a, category b , shop c
-                Where a.Cat_ID =b.Cat_ID and a.shop_id = c.shop_id");
+                From product a, category b , shop c Where a.Cat_ID =b.Cat_ID and a.shop_id = c.shop_id");
             while($row=pg_fetch_array($result)){	
 			?>
 			<tr>
