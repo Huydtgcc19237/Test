@@ -13,6 +13,26 @@
                 <th style='text-align:center'><strong>Shop Address</strong></th>
             </tr>
         </thead>
+
+		<tbody>
+            <?php
+                include_once("connection.php");
+                $No=1;
+                $result = pg_query( "SELECT * FROM shop ") 
+                        or die(pg_error());
+                while($row=pg_fetch_array($result))
+                {
+            ?>
+                    <tr>
+                        <td style='text-align:center'><?php echo $No;?></td>
+                        <td><?php echo $row["shop_id"];?></td>
+                        <td><?php echo $row["shop_name"];?></td>
+                        <td><?php echo $row["shop_loca"];?></td>
+            <?php
+                $No++;
+                }
+            ?>
+		</tbody>
     </table>  
 </form>
 <?php
