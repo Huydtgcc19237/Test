@@ -71,7 +71,7 @@ if(isset($_POST["btnAdd"]))
 						$sqlstring="IINSERT INTO public.product(pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
 							VALUES('$id','$proname', $proprice,'$prodetail','$qty','$filePic','$category','$shop')";
 						pg_query($sqlstring);
-						echo'<li>You have add successfully</li>';
+						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{
 				echo "<li>Duplicate product ID or Name</li>";
