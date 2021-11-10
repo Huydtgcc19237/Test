@@ -55,6 +55,7 @@
                 $result=pg_query("select product_id, product_name, price, pro_qty ,pro_image, cat_id, shop_id
                 From product a, category b , shop c Where a.cat_id = b.cat_id and a.shop_id = c.shop_id");
                 while($row=pg_fetch_array($result)){
+                    var_dump($result);
                 ?>
 			<tr>
               <td ><?php echo $No; ?></td>
