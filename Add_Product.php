@@ -68,7 +68,7 @@ if(isset($_POST["btnAdd"]))
 					pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
 					VALUES ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
 					mysqli_query($sqlstring) or die(pg_error());
-					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+					
 			}
 			else{
 				echo "<li>Duplicate product ID or Name</li>";
