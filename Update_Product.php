@@ -196,7 +196,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 						        copy($pic['tmp_name'], "images/".$pic['name']);
 						        $filePic = $pic['name'];
 						        $sqlstring="UPDATE product set Pro_Name='$proname', pro_Price='$price',
-						        detaildesc='$detaildesc', Pro_qty='$qty',
+						        detaildesc='$detaildesc', Pro_qty=$qty,
 						        Pro_image='$filePic', Cat_ID='$category', shop_id='$shop' WHERE Pro_ID='$id'";
 						        pg_query($sqlstring);
 						        echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
@@ -219,7 +219,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 				if(pg_num_rows($result)==0){
 					$sqlstring="UPDATE product set Pro_Name='$proname',
 					pro_Price=$price, detaildesc='$detaildesc',
-					Pro_qty=$qty, Cat_ID='$category', shop_id'$shop' WHERE Pro_ID='$id'";
+					Pro_qty=$qty, Cat_ID='$category', shop_id='$shop' WHERE Pro_ID='$id'";
 					pg_query($sqlstring);
                     echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 				}

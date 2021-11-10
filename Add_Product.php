@@ -123,14 +123,7 @@ if(isset($_POST["btnAdd"]))
 							      <input type="text" name="txtPrice" id="txtPrice" class="form-control" placeholder="Price" value=''/>
 							</div>
                  </div>   
-                            
-                <div class="form-group">   
-                    <label for="lblShort" class="col-sm-2 control-label">Short description(*):  </label>
-							<div class="col-sm-10">
-							      <input type="text" name="txtShort" id="txtShort" class="form-control" placeholder="Short description" value=''/>
-							</div>
-                </div>
-                            
+                                          
                 <div class="form-group">  
         	        <label for="lblDetail" class="col-sm-2 control-label">Detail description(*):  </label>
 							<div class="col-sm-10">
