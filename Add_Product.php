@@ -1,83 +1,91 @@
     <!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
-<?php
-include_once("connection.php");
-function bind_Category_List(){
-	$sqlstring ="SELECT cat_id, cat_name from category";
-	$result= pg_query($sqlstring);
-	echo"<SELECT name ='CategoryList'class='form-control '
+	<div id="top">
+        <?php
+	include_once("connection.php");
+		function bind_Category_List($Connect){
+			$sqlstring ="select cat_id, cat_name from category";
+			$result =pg_query($Connect,$sqlstring);
+			echo "<select name='CategoryList' class='from-control'>
 			<option value='0'>Choose category</option>";
-			while($row = pg_fetch_array($result)){
-				echo"<OPTION value='".$row['cat_id']."'>".$row['cat_name']. "</option>";
+			while($row=pg_fetch_array($result)){
+				echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
 			}
-			echo"</select>";
-
-}
-?>
-
-<?php
-if(isset($_POST["btnAdd"]))
-{
-	$id=$_POST["txtID"];
-	$proname=$_POST["txtName"];
-	$short=$_POST["txtShort"];
-	$details=$_POST["txtDetail"];
-	$price=$_POST["txtPrice"];
-	$qty=$_POST["txtQty"];
-	$pic=$_FILES['txtImage'];
-	$category=$_POST['CategoryList'];
-	
-	$err="";
-	if(trim($id)==""){
-		$err.="<li>Enter product ID, please</li>";
-	}
-	if(trim($proname)==""){
-		$err.="<li>Enter product name, please</li>";
-	}
-	if(trim($category)==""){
-		$err.="<li>Enter product category, please</li>";
-	}
-	if(!is_numeric($price)){
-		$err.="<li>Enter price, please</li>";
-	}
-	if(!is_numeric($qty)){
-		$err.="<li>Enter quantity, please</li>";
-	}
-	if($err!=""){
-		echo "<ul>$err</ul>";
-	}
-	else{
-		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
-		if($pic['size']<614400)
-		{
-			$sq="SELECT * from product where pro_id='$id'or pro_name='$proname'";
-			$result= pg_query($sq);
-
-			if(pg_num_rows($result)==0)
-			{
-				copy($pic['tmp_name'],"ATNtoy/".$pic['name']);
-						$filePic =$pic['name'];
-						$sqlstring="INSERT INTO product(pro_id, pro_name, pro_price, pro_desc, pro_qty, pro_image, cat_id,)
-							VALUES('$id','$proname', $price,'$short','$detail','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-						pg_query($sqlstring);
-						echo'<li>You have add successfully</li>';
+			echo "</select>";
+		}
+		function bind_Shop_List($Connect){
+			$sqlstring ="select shop_id, shop_name from shop";
+			$result =pg_query($Connect,$sqlstring);
+			echo "<select name='ShopList' class='from-control'>
+			<option value='0'>Choose Shop</option>";
+			while($row=pg_fetch_array($result)){
+				echo "<option value='".$row['shop_id']."'>".$row['shop_name']."</option>";
+			}
+			echo "</select>";
+		}
+		if(isset($_POST['btnAdd'])){
+			$id =$_POST['txtID'];
+			$proname =$_POST['txtName'];
+			$detail =$_POST['txtDetail'];
+			$price =$_POST['txtPrice'];
+			$qty =$_POST['txtQty'];
+			$pic =$_FILES['txtImage'];
+			$category =$_POST['CategoryList'];
+			$shop =$_POST['ShopList'];
+			$err="";
+			if(trim($id)==""){
+				$err.="<li>Enter product ID,please</li>";
+			}
+			if(trim($proname)==""){
+				$err.="<li>Enter product name,please</li>";
+			}
+			if(!is_numeric($price)){
+				$err.="<li>Product price must be number,please</li>";
+			}
+			if(!is_numeric($qty)){
+				$err.="<li>Product qty must be number,please</li>";
+			}
+			if(trim($shop)==""){
+				$err.="<li>Enter Shop ID,please</li>";
+			}
+			if($err!=""){
+				echo "<ul>$err</ul>";
 			}
 			else{
-				echo "<li>Duplicate product ID or Name</li>";
-			}
-		}
-		else{
-			echo"Size of image too big";
-		}
-	}
-	else{
-		echo"Image format is not correct";
-	}
-}
-}
+				if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
+					if($pic['size']<=614400)
+					{
 
-?>
+						$sq="select * from product where pro_id='$id' or pro_name='$proname'";
+						$result=pg_query($Connect,$sq);
+						if(pg_num_rows($result)==0)
+						{
+							copy($pic['tmp_name'], 'images/' .$pic['name']);
+							$filePic=$pic['name'];
+							$sqlstring="insert into product( pro_id, pro_name, pro_price,pro_desc, pro_qty, pro_image, cat_id, shop_id)
+							values('$id','$proname','$price','$detail','$qty','$filePic','$category','$shop')";
+							pg_query($Connect,$sqlstring);
+							echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+						}
+						else
+						{
+							echo "<li>Duplication product ID or Name</li>";
+						}
+					}
+					else
+					{
+						echo "Size of image too big";
+					}
+				}
+				else
+				{
+					echo "Image format is not correct";
+				}
+			}
+
+		}
+        ?>
 <div class="container">
 	<h2>Adding new Product</h2>
 
@@ -97,9 +105,15 @@ if(isset($_POST["btnAdd"]))
                 <div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Product category(*):  </label>
 							<div class="col-sm-10">
-							      <?php bind_Category_List($conn); ?>
+							      <?php bind_Category_List($conn);  ?>
 							</div>
                 </div>  
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">Product Shop(*):  </label>
+                <div class="col-sm-10">
+                    <?php bind_Shop_List($conn);  ?>
+                </div>
+            </div>
                           
                 <div class="form-group">  
                     <label for="lblGia" class="col-sm-2 control-label">Price(*):  </label>
@@ -107,6 +121,8 @@ if(isset($_POST["btnAdd"]))
 							      <input type="text" name="txtPrice" id="txtPrice" class="form-control" placeholder="Price" value=''/>
 							</div>
                  </div>   
+                            
+               
                             
                 <div class="form-group">  
         	        <label for="lblDetail" class="col-sm-2 control-label">Detail description(*):  </label>
@@ -153,9 +169,10 @@ if(isset($_POST["btnAdd"]))
 				<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new"/>
-                              <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='Product_Management.php'" />
+                              <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=product_management'" />
                               	
 						</div>
 				</div>
-		</form>
+			</form>
+</div>
 </div>
