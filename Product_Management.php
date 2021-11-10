@@ -51,11 +51,11 @@
                 <?php
 				include_once("connection.php");
                 $No=1;
-                $result=pg_query("SELECT product.pro_id, product.pro_name, product.pro_price, product.pro_qty, product.pro_image, category.cat_id, shop.shop_id
-                from product, category where product.cat_id = category.cat_id = shop.shop_id");
+                $result=pg_query("SELECT product.pro_id, product.pro_name, product.pro_price, product.pro_qty, product.pro_image, category.cat_id,
+                from product, category where product.cat_id = category.cat_id");
                 while($row=pg_fetch_array($result))
                 {
-                    var_dump($result);
+                    var_dump();
 
                 
                 ?>
