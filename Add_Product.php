@@ -4,9 +4,9 @@
 	<div id="top">
         <?php
 	include_once("connection.php");
-		function bind_Category_List($conn){
+		function bind_Category_List($Connect){
 			$sqlstring ="select cat_id, cat_name from category";
-			$result =pg_query($conn,$sqlstring);
+			$result =pg_query($sqlstring);
 			echo "<select name='CategoryList' class='from-control'>
 			<option value='0'>Choose category</option>";
 			while($row=pg_fetch_array($result)){
@@ -16,7 +16,7 @@
 		}
 		function bind_Shop_List($conn){
 			$sqlstring ="select shop_id, shop_name from shop";
-			$result =pg_query($conn,$sqlstring);
+			$result =pg_query($sqlstring);
 			echo "<select name='ShopList' class='from-control'>
 			<option value='0'>Choose Shop</option>";
 			while($row=pg_fetch_array($result)){
