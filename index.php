@@ -190,7 +190,7 @@
         elseif ($page=="shop") {
             include_once("shop.php");
         }
-        elseif ($page=="mamager_shop") {
+        elseif ($page=="manager_shop") {
             include_once("manager_shop.php");
         }
      }
