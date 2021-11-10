@@ -4,24 +4,15 @@
 <?php
 include_once("connection.php");
 function bind_Category_List(){
-	$sqlstring="select Cat_ID, Cat_Name from category";
-	$result=pg_query($sqlstring);
-	echo "<select name='CategoryList' class='form-control'>
-		<option value='0'>Choose category</option>";
-		while($row= mysqli_fetch_array($result)){
-			echo "<option value='".$row['Cat_ID']."'>".$row['Cat_Name']."</option>";
-		} 
-		echo "</select>";
-}
-function bind_Shop_List(t){
-	$sqlstring ="select shop_id, shop_name from shop";
-	$result =pg_query($sqlstring);
-	echo "<select name='ShopList' class='from-control'>
-	<option value='0'>Choose Shop</option>";
-	while($row=pg_fetch_array($result)){
-		echo "<option value='".$row['shop_id']."'>".$row['shop_name']."</option>";
-	}
-	echo "</select>";
+	$sqlstring ="SELECT cat_id, cat_name from category";
+	$result= pg_query($sqlstring);
+	echo"<SELECT name ='CategoryList'class='form-control '
+			<option value='0'>Choose category</option>";
+			while($row = pg_fetch_array($result)){
+				echo"<OPTION value='".$row['cat_id']."'>".$row['cat_name']. "</option>";
+			}
+			echo"</select>";
+
 }
 ?>
 <?php
@@ -59,16 +50,17 @@ if(isset($_POST["btnAdd"]))
 		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
 		if($pic['size']<614400)
 		{
-			$sq="SELECT * FROM product WHERE pro_id='$id' OR pro_name='$proname'";
-			$result=mysqli_query($sq);
-			if(mysqli_num_rows($result)==0){
-				copy($pic['tmp_name'],"images/".$pic['name']);
-				$filePic=$pic['name'];
-				$sqlstring="NSERT INTO public.product(
-					pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
-					VALUES ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
-					mysqli_query($sqlstring) or die(pg_error());
-					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
+			$sq="SELECT * from product where product_id='$id'or product_name='$proname'";
+			$result= pg_query($sq);
+
+			if(pg_num_rows($result)==0)
+			{
+				copy($pic['tmp_name'],"ATNtoy/".$pic['name']);
+						$filePic =$pic['name'];
+						$sqlstring="INSERT INTO product(product_id, product_name, price, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id)
+							VALUES('$id','$proname', $price,'$short','$detail','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
+						pg_query($sqlstring);
+						echo'<li>You have add successfully</li>';
 			}
 			else{
 				echo "<li>Duplicate product ID or Name</li>";
