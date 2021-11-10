@@ -12,8 +12,19 @@ function bind_Category_List(){
 				echo"<OPTION value='".$row['cat_id']."'>".$row['cat_name']. "</option>";
 			}
 			echo"</select>";
-
 }
+
+function bind_shop_List(){
+	$sqlstring ="SELECT shop_id, shop_name from shop";
+	$result= pg_query($sqlstring);
+	echo"<SELECT name ='CategoryList'class='form-control '
+			<option value='0'>Choose category</option>";
+			while($row = pg_fetch_array($result)){
+				echo"<OPTION value='".$row['shop_id']."'>".$row['shop_name']. "</option>";
+			}
+			echo"</select>";
+}
+
 ?>
 <?php
 if(isset($_POST["btnAdd"]))
@@ -50,15 +61,15 @@ if(isset($_POST["btnAdd"]))
 		if($pic['type']=="image/jpg"||$pic['type']=="image/jpeg"||$pic['type']=="image/png"||$pic['type']=="image/gif"){
 		if($pic['size']<614400)
 		{
-			$sq="SELECT * from product where product_id='$id'or product_name='$proname'";
+			$sq="SELECT * from product where pro_id='$id'or pro_name='$proname'";
 			$result= pg_query($sq);
 
 			if(pg_num_rows($result)==0)
 			{
 				copy($pic['tmp_name'],"ATNtoy/".$pic['name']);
 						$filePic =$pic['name'];
-						$sqlstring="INSERT INTO product(product_id, product_name, price, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id)
-							VALUES('$id','$proname', $price,'$short','$detail','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
+						$sqlstring="IINSERT INTO public.product(pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
+							VALUES('$id','$proname', $proprice,'$prodetail','$qty','$filePic','$category','$shop')";
 						pg_query($sqlstring);
 						echo'<li>You have add successfully</li>';
 			}
@@ -96,9 +107,15 @@ if(isset($_POST["btnAdd"]))
                 <div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Product category(*):  </label>
 							<div class="col-sm-10">
-							      <?php bind_Category_List($conn); ?>
+							      <?php bind_Category_List(); ?>
 							</div>
-                </div>  
+                </div>
+				<div class="form-group">   
+                    <label for="" class="col-sm-2 control-label">Product Shop(*):  </label>
+							<div class="col-sm-10">
+							      <?php bind_shop_List(); ?>
+							</div>
+                </div>   
                           
                 <div class="form-group">  
                     <label for="lblGia" class="col-sm-2 control-label">Price(*):  </label>
