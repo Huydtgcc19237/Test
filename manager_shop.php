@@ -18,7 +18,7 @@
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = pg_query( "SELECT * FROM manage_shop ") 
+                $result = pg_query( "SELECT * FROM shop ") 
                         or die(pg_error());
                 while($row=pg_fetch_array($result))
                 {
