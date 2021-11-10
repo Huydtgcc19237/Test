@@ -8,7 +8,7 @@ function bind_Category_List(){
 	$result=pg_query($sqlstring);
 	echo "<select name='CategoryList' class='form-control'>
 		<option value='0'>Choose category</option>";
-		while($row= pg_fetch_array($result)){
+		while($row= mysqli_fetch_array($result)){
 			echo "<option value='".$row['Cat_ID']."'>".$row['Cat_Name']."</option>";
 		} 
 		echo "</select>";
@@ -68,7 +68,7 @@ if(isset($_POST["btnAdd"]))
 					pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
 					VALUES ('$id','$proname','$price','$short','$details','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
 					mysqli_query($sqlstring) or die(pg_error());
-					
+					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{
 				echo "<li>Duplicate product ID or Name</li>";
