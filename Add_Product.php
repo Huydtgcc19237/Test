@@ -68,8 +68,8 @@ if(isset($_POST["btnAdd"]))
 			{
 				copy($pic['tmp_name'],"ATNtoy/".$pic['name']);
 						$filePic =$pic['name'];
-						$sqlstring="IINSERT INTO public.product(pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
-							VALUES('$id','$proname', $proprice,'$prodetail','$qty','$filePic','$category','$shop')";
+						$sqlstring="insert into product( pro_id, pro_name, pro_price,pro_desc, pro_qty, pro_image, cat_id, shop_id)
+							values('$id','$proname','$price','$detail','$qty','$filePic','$category','$shop')";
 						pg_query($sqlstring);
 						echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
