@@ -25,7 +25,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 	function bind_shop_List($selectedValue){
 		$sqlstring="SELECT shop_id, shop_name from shop";
 		$result=pg_query($sqlstring);
-		echo"<Select name='ShopList' class='form-control'>
+		echo"<Select name='CategoryList' class='form-control'>
 			<option value='0'>Choose shop</option>";
 			while($row=pg_fetch_array($result)){
 				if($row['cat_id']==$selectedValue){
@@ -39,12 +39,12 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 	}
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
-		$sqlstring="SELECT product_name, pro_price, pro_desc , pro_qty,
+		$sqlstring="SELECT pro_name, pro_price, detaildesc , pro_qty,
 		pro_image, cat_id, shop_id from product where pro_id='$id'";
 		$result=pg_query($sqlstring);
 		$row=pg_fetch_array($result);
 		$proname=$row["pro_name"];
-		$prodesc=$row['pro_desc'];
+		$detaildesc=$row['detaildesc'];
 		$price=$row['pro_price'];
 		$qty=$row['pro_qty'];
 		$pic=$row['pro_image'];
@@ -101,7 +101,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
                 <div class="form-group">  
         	        <label for="lblDetail" class="col-sm-2 control-label">Detail description(*):  </label>
 							<div class="col-sm-10">
-							      <textarea name="txtDetail" rows="4" class="ckeditor"><?php echo $detail; ?></textarea>
+							      <textarea name="txtDetail" rows="4" class="ckeditor"><?php echo $detaildesc; ?></textarea>
               					  <script language="javascript">
                                         CKEDITOR.replace( 'txtDetail',
                                         {
@@ -195,9 +195,9 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 					    if(pg_num_rows($result)==0){
 						        copy($pic['tmp_name'], "images/".$pic['name']);
 						        $filePic = $pic['name'];
-						        $sqlstring="UPDATE product set Pro_Name='$proname', pro_Price=$price,
-						        pro_Desc='$detail', Pro_qty=$qty,
-						        Pro_image='$filePic',Cat_ID='$category', shop_id'$shop' WHERE Pro_ID='$id'";
+						        $sqlstring="UPDATE product set Pro_Name='$proname', pro_Price='$price',
+						        detaildesc='$detaildesc', Pro_qty='$qty',
+						        Pro_image='$filePic', Cat_ID='$category', shop_id='$shop' WHERE Pro_ID='$id'";
 						        pg_query($sqlstring);
 						        echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 					        }
@@ -218,7 +218,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 				$result=pg_query($sq);
 				if(pg_num_rows($result)==0){
 					$sqlstring="UPDATE product set Pro_Name='$proname',
-					pro_Price=$price, pro_Desc='$detail',
+					pro_Price=$price, detaildesc='$detaildesc',
 					Pro_qty=$qty, Cat_ID='$category', shop_id'$shop' WHERE Pro_ID='$id'";
 					pg_query($sqlstring);
                     echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
