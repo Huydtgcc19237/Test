@@ -15,9 +15,7 @@
                     <th><strong>Price</strong></th>
                     <th><strong>Quantity</strong></th>
                     <th><strong>Category ID</strong></th>
-                    <th>
-                        <strong>Shop ID</strong>
-                    </th>
+                    <th><strong>Shop ID</strong></th>
                     <th><strong>Image</strong></th>
                     <th><strong>Edit</strong></th>
                     <th><strong>Delete</strong></th>
@@ -41,20 +39,19 @@
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
                     $sq="select Pro_image from product where Pro_ID='$id'";
-                    $res=pg_query($conn,$sq);
+                    $res=pg_query($sq);
                     $row=pg_fetch_array($res);
                     $filePic=$row['Pro_image'];
                     unlink("image/".$filePic);
-                    pg_query($conn,"DELETE FROM product WHERE Pro_ID='$id'");
+                    pg_query("DELETE FROM product WHERE Pro_ID='$id'");
                 }
             }   
             ?>
                 <?php
 				include_once("connection.php");
                 $No=1;
-                $result=pg_query($conn,"select Pro_ID, Pro_Name,Pro_Price,Pro_qty,Pro_image,Cat_Name, shop_name
-                From product a, category b , shop c
-                Where a.Cat_ID =b.Cat_ID and a.shop_id = c.shop_id");
+                $result=pg_query("select Pro_ID, Pro_Name, Pro_Price, Pro_qty, Pro_image, Cat_Name, shop_name
+                From product a, category b , shop c Where a.Cat_ID =b.Cat_ID and a.shop_id = c.shop_id");
                 while($row=pg_fetch_array($result)){
                 ?>
 			<tr>
