@@ -34,6 +34,7 @@
                         <td><?php echo $row["deliverydate"];?></td>
                         <td><?php echo $row["delivery_loca"];?></td>
                         <td><?php echo $row["payment"];?></td>
+                        <td><?php echo $row["pro_id"];?></td>
             <?php
                 $No++;
                 }
