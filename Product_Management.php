@@ -52,7 +52,7 @@
                 <?php
 				include_once("connection.php");
                 $No=1;
-                $result=pg_query("select pro_id, pro_name, pro_price, pro_qty ,pro_image, shop_id, cat_id
+                $result=pg_query("select pro_id, pro_name, pro_price, pro_qty ,pro_image,
                 From product a, category b , manager_shop c Where a.cat_id = b.cat_id and a.shop_id = c.shop_id");
                 while($row=pg_fetch_array($result)){
                     var_dump($result);
