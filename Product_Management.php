@@ -15,9 +15,6 @@
                     <th><strong>Price</strong></th>
                     <th><strong>Quantity</strong></th>
                     <th><strong>Category ID</strong></th>
-                    <th>
-                        <strong>Shop ID</strong>
-                    </th>
                     <th><strong>Image</strong></th>
                     <th><strong>Edit</strong></th>
                     <th><strong>Delete</strong></th>
@@ -55,7 +52,7 @@
                 from product, category where product.cat_id = category.cat_id");
                 while($row=pg_fetch_array($result))
                 {
-                    var_dump();
+                    var_dump($result);
 
                 
                 ?>
