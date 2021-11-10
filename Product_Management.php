@@ -64,6 +64,7 @@
               <td><?php echo $row['price']; ?></td>
               <td ><?php echo $row['pro_qty']; ?></td>
               <td><?php echo $row['cat_id']; ?></td>
+              <td><?php echo $row['shop_id']; ?></td>
                 <td>
                     <?php echo $row['shop_name']; ?>
                 </td>
