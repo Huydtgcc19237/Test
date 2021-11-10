@@ -4,9 +4,9 @@
 	<div id="top">
         <?php
 	include_once("connection.php");
-		function bind_Category_List($Connect){
+		function bind_Category_List(){
 			$sqlstring ="select cat_id, cat_name from category";
-			$result =pg_query($Connect,$sqlstring);
+			$result =pg_query($sqlstring);
 			echo "<select name='CategoryList' class='from-control'>
 			<option value='0'>Choose category</option>";
 			while($row=pg_fetch_array($result)){
@@ -14,9 +14,9 @@
 			}
 			echo "</select>";
 		}
-		function bind_Shop_List($Connect){
+		function bind_Shop_List(t){
 			$sqlstring ="select shop_id, shop_name from shop";
-			$result =pg_query($Connect,$sqlstring);
+			$result =pg_query($sqlstring);
 			echo "<select name='ShopList' class='from-control'>
 			<option value='0'>Choose Shop</option>";
 			while($row=pg_fetch_array($result)){
@@ -58,14 +58,14 @@
 					{
 
 						$sq="select * from product where pro_id='$id' or pro_name='$proname'";
-						$result=pg_query($Connect,$sq);
+						$result=pg_query($sq);
 						if(pg_num_rows($result)==0)
 						{
 							copy($pic['tmp_name'], 'images/' .$pic['name']);
 							$filePic=$pic['name'];
 							$sqlstring="insert into product( pro_id, pro_name, pro_price,pro_desc, pro_qty, pro_image, cat_id, shop_id)
 							values('$id','$proname','$price','$detail','$qty','$filePic','$category','$shop')";
-							pg_query($Connect,$sqlstring);
+							pg_query($sqlstring);
 							echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 						}
 						else
@@ -105,13 +105,13 @@
                 <div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Product category(*):  </label>
 							<div class="col-sm-10">
-							      <?php bind_Category_List($conn);  ?>
+							      <?php bind_Category_List();  ?>
 							</div>
                 </div>  
             <div class="form-group">
                 <label for="" class="col-sm-2 control-label">Product Shop(*):  </label>
                 <div class="col-sm-10">
-                    <?php bind_Shop_List($conn);  ?>
+                    <?php bind_Shop_List();  ?>
                 </div>
             </div>
                           
