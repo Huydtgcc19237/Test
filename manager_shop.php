@@ -3,14 +3,17 @@
     {
 ?>
 <form name="frm" method="post">
-    <h2 style="text-align: center;">Management Shop</h2>
+    <h2 style="text-align: center;">Management Order Details</h2>
     <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th style='text-align:center'><strong>No.</strong></th>
-                <th style='text-align:center'><strong>ID Shop</strong></th>
-                <th style='text-align:center'><strong>Name Shop</strong></th>
-                <th style='text-align:center'><strong>Shop Address</strong></th>
+                <th style='text-align:center'><strong>Order ID</strong></th>
+                <th style='text-align:center'><strong>Username</strong></th>
+                <th style='text-align:center'><strong>Order Day</strong></th>
+                <th style='text-align:center'><strong>Delivery Day</strong></th>
+                <th style='text-align:center'><strong>Delivery Address</strong></th>
+                <th style='text-align:center'><strong>Payment</strong></th>
             </tr>
         </thead>
 
@@ -18,16 +21,20 @@
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = pg_query( "SELECT * FROM shop ") 
+                $result = pg_query("SELECT * FROM orderdetails ") 
                         or die(pg_error());
                 while($row=pg_fetch_array($result))
                 {
             ?>
                     <tr>
                         <td style='text-align:center'><?php echo $No;?></td>
-                        <td><?php echo $row["shop_id"];?></td>
-                        <td><?php echo $row["shop_name"];?></td>
-                        <td><?php echo $row["shop_loca"];?></td>
+                        <td><?php echo $row["orderid"];?></td>
+                        <td><?php echo $row["username"];?></td>
+                        <td><?php echo $row["orderdate"];?></td>
+                        <td><?php echo $row["deliverydate"];?></td>
+                        <td><?php echo $row["delivery_loca"];?></td>
+                        <td><?php echo $row["payment"];?></td>
+                        <td><?php echo $row["pro_id"];?></td>
             <?php
                 $No++;
                 }
