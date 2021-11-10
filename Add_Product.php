@@ -57,7 +57,7 @@ if(isset($_POST["btnAdd"]))
 			{
 				copy($pic['tmp_name'],"ATNtoy/".$pic['name']);
 						$filePic =$pic['name'];
-						$sqlstring="INSERT INTO product(pro_id, pro_name, pro_price, smalldesc, detaildesc, prodate, pro_qty, pro_image, cat_id)
+						$sqlstring="INSERT INTO product(pro_id, pro_name, pro_price, pro_desc, pro_qty, pro_image, cat_id, shop_id)
 							VALUES('$id','$proname', $price,'$short','$detail','".date('Y-m-d H:i:s')."',$qty,'$filePic','$category')";
 						pg_query($sqlstring);
 						echo'<li>You have add successfully</li>';
@@ -106,13 +106,6 @@ if(isset($_POST["btnAdd"]))
 							      <input type="text" name="txtPrice" id="txtPrice" class="form-control" placeholder="Price" value=''/>
 							</div>
                  </div>   
-                            
-                <div class="form-group">   
-                    <label for="lblShort" class="col-sm-2 control-label">Short description(*):  </label>
-							<div class="col-sm-10">
-							      <input type="text" name="txtShort" id="txtShort" class="form-control" placeholder="Short description" value=''/>
-							</div>
-                </div>
                             
                 <div class="form-group">  
         	        <label for="lblDetail" class="col-sm-2 control-label">Detail description(*):  </label>
