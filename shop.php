@@ -97,7 +97,7 @@
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
                                                     <div class="type-lb">
-                                                        <p class="sale">All Product</p>
+                                                        <p class="sale">HOT</p>
                                                     </div>
                                                     <?php 
                                                     $sq = pg_query($Connect,"select * from product");
