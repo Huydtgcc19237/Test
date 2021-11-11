@@ -160,7 +160,7 @@
             include_once("update_fb.php");
         }
         elseif($page=="update_order"){
-            include_once("Update_order.php");
+            include_once("Update_Order.php");
         }
         elseif($page=="logout"){
             include_once("Logout.php");
