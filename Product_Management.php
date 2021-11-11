@@ -38,19 +38,19 @@
             if(isset($_GET["function"])=="del"){
                 if(isset($_GET["id"])){
                     $id=$_GET["id"];
-                    $sq="$Connect,select Pro_image from product where pro_id='$id'";
+                    $sq="select Pro_image from product where pro_id='$id'";
                     $res=pg_query($sq);
                     $row=pg_fetch_array($res);
                     $filePic=$row['Pro_image'];
                     unlink("image/".$filePic);
-                    pg_query($Connect,"DELETE FROM product WHERE pro_id='$id'");
+                    pg_query("DELETE FROM product WHERE pro_id='$id'");
                 }
             }   
             ?>
                 <?php
 				include_once("connection.php");
                 $No=1;
-                $result=pg_query($Connect,"select Pro_ID, Pro_Name, Pro_Price, Pro_qty, Pro_image, Cat_Name, shop_name
+                $result=pg_query("select Pro_ID, Pro_Name, Pro_Price, Pro_qty, Pro_image, Cat_Name, shop_name
                 From product a, category b , shop c Where a.Cat_ID =b.Cat_ID and a.shop_id = c.shop_id");
                 while($row=pg_fetch_array($result)){
                 ?>
