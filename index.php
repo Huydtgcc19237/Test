@@ -176,6 +176,9 @@
         elseif($page=="update_product"){
             include_once("Update_Product.php");
         }
+        elseif($page=="update_fb"){
+            include_once("update_fb.php");
+        }
         elseif($page=="logout"){
             include_once("Logout.php");
         }
