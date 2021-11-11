@@ -167,6 +167,9 @@
         elseif($page=="add_product"){
             include_once("Add_Product.php");
         }
+        elseif($page=="add_fb"){
+            include_once("Add_fb.php");
+        }
         elseif($page=="update_category"){
             include_once("Update_Category.php");
         }
