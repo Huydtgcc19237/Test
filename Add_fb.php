@@ -6,7 +6,7 @@
         <?php
 	include_once("connection.php");
     function bind_Username_List(){
-        $sqlstring ="select username , email from customer";
+        $sqlstring ="select username  from customer";
         $result =pg_query($sqlstring);
         echo "<select name='CategoryList' class='from-control'>
         <option value='0'>Choose username</option>";
@@ -25,7 +25,7 @@
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
         if($username==""){
-			$err.="<li>Enter Feeback ID, please</li>";
+			$err.="<li>Enter email of username, please</li>";
 		}
 		if($err!=""){
 			echo"<ul>$err</ul>";
