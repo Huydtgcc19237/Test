@@ -39,7 +39,7 @@
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$sq="select * from feedback wherefb_id='$id' and username='$username'";
+			$sq="select * from feedback where fb_id='$id' and username='$username'";
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
@@ -68,6 +68,7 @@
                            <div class="col-sm-10">
                            <?php bind_Username_List(); ?></div>
                 </div>
+                
                     <div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Smalldesc(*):  </label>
 							<div class="col-sm-10">
