@@ -12,7 +12,7 @@
         <thead>
             <tr>
                 <th style='text-align:center'><strong>No.</strong></th>
-                <th style='text-align:center'><strong>Username</strong></th>
+                <th style='text-align:center'><strong>Email of username</strong></th>
                 <th style='text-align:center'><strong>Small Feedback</strong></th>
                 <th style='text-align:center'><strong>Detail Feedback</strong></th>
             </tr>
@@ -29,7 +29,7 @@
             ?>
                     <tr>
                         <td style='text-align:center'><?php echo $No;?></td>
-                        <td><?php echo $row["username"];?></td>
+                        <td><?php echo $row["email"];?></td>
                         <td><?php echo $row["fb_smalldes"];?></td>
                         <td><?php echo $row["fb_des"];?></td>
                         <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["fb_id"];?>"><img src='images/edit.png' border='0'  /></a></td>

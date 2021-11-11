@@ -24,21 +24,24 @@
 		if($id==""){
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
+        if($email==""){
+			$err.="<li>Enter Choose email of username, please</li>";
+		}
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$sq=" Select * from feedback where fb_id='$id' or username='$username'";
+			$sq=" Select * from feedback where fb_id='$id'";
 			$result=pg_query($Connect,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des)
-				VALUES ('$id','$username','$smalldes','$des')");
-				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_feedback"/>';
+				pg_query("INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
+				VALUES ('$id','$email','$username','$smalldes','$des')");
+				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_fb"/>';
 			}
 			else
 			{
-				echo "<li>Duplication Feedbacks ID or Name</li>";
+				echo "<li>Duplication Feedbacks ID</li>";
 			}
 		}
 
@@ -57,7 +60,7 @@
 							</div>
 					</div>	
                 <div class="form-group">   
-                    <label for="" class="col-sm-2 control-label">Username(*):  </label>
+                    <label for="" class="col-sm-2 control-label">Email of Username(*):  </label>
 							<div class="col-sm-10">
 							      <?php bind_Username_List();  ?>
 							</div>
