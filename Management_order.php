@@ -37,6 +37,8 @@
                         <td><?php echo $row["delivery_loca"];?></td>
                         <td><?php echo $row["payment"];?></td>
                         <td><?php echo $row["pro_id"];?></td>
+                        <td style='text-align:center'><a href="?page=update_order&&id=<?php echo $row["orderid"];?>"><img src='images/edit.png' border='0'  /></a></td>
+                        <td style='text-align:center'><a href="?page=order&&function=del&&id=<?php echo $row["orderid"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             <?php
                 $No++;
                 }

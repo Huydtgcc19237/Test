@@ -26,17 +26,11 @@
 			echo "<ul>$err</ul>";
 		}
 		else{
-			$id=htmlspecialchars(mysqli_real_escape_string($conn,$id));
-			$name=htmlspecialchars(mysqli_real_escape_string($conn,$name));
-			$DeliveryDate=htmlspecialchars(mysqli_real_escape_string($conn,$DeliveryDate));
-            $Delivery_loca=htmlspecialchars(mysqli_real_escape_string($conn,$Delivery_loca));
-            $pay=htmlspecialchars(mysqli_real_escape_string($conn,$pay));
-            $us=htmlspecialchars(mysqli_real_escape_string($conn,$us));
-			$sq="SELECT * FROM orders WHERE OrderID='$id";
-			$result=mysqli_query($conn,$sq);
+			$sq="SELECT * FROM orderdetails WHERE orderid='$id";
+			$result=mysqli_query($sq);
 			if(mysqli_num_rows($result)==0)
 			{
-				mysqli_query($conn,"INSERT INTO orders (OrderID, OrderDate, DeliveryDate,Delivery_loca,Payment,username) values ('$id','$name','$DeliveryDate',' $Delivery_loca',
+				mysqli_query("INSERT INTO orderdetails (orderid, username, orderdate, deliverydate, delivery_loca,payment,pro_id) values ('$id','$name','$DeliveryDate',' $Delivery_loca',
                 '$pay','$us')");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=management_order"/>';
 			}
