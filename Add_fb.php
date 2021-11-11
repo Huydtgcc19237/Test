@@ -6,10 +6,10 @@
         <?php
 	include_once("connection.php");
     function bind_Username_List(){
-        $sqlstring ="select username , email from category";
+        $sqlstring ="select username , email from username";
         $result =pg_query($sqlstring);
         echo "<select name='CategoryList' class='from-control'>
-        <option value='0'>Choose category</option>";
+        <option value='0'>Choose username</option>";
         while($row=pg_fetch_array($result)){
             echo "<option value='".$row['username']."'>".$row['email']."</option>";
         }
@@ -32,10 +32,10 @@
 		}
 		else{
 			$sq=" Select * from feedback where fb_id='$id' or username='$name'";
-			$result=pg_query($sq);
+			$result=pg_query($Connect,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("INSERT INTO feedback (fb_id, username,fb_smalldes, fb_des)
+				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des)
 				VALUES ('$id','$name','$smalldes','$des')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_feedback"/>';
 			}
