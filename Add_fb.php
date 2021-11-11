@@ -6,7 +6,7 @@
         <?php
 	include_once("connection.php");
     function bind_Username_List(){
-        $sqlstring ="select username  from customer";
+        $sqlstring ="select username, email  from customer";
         $result =pg_query($sqlstring);
         echo "<select name='usernameList' class='from-control'>
         <option value='0'>Choose username</option>";
