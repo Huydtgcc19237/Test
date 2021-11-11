@@ -24,15 +24,12 @@
 		if($id==""){
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
-        if($email==""){
-			$err.="<li>Enter Choose email of username, please</li>";
-		}
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
 		else{
 			$sq=" Select * from feedback where fb_id='$id'";
-			$result=pg_query($Connect,$sq);
+			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
 				pg_query("INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
