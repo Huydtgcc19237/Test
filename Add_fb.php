@@ -6,9 +6,9 @@
         <?php
 	include_once("connection.php");
     function bind_Username_List(){
-        $sqlstring ="select username , email from username";
+        $sqlstring ="select username, email from customer";
         $result =pg_query($sqlstring);
-        echo "<select name='CategoryList' class='from-control'>
+        echo "<select name='UsernameList' class='from-control'>
         <option value='0'>Choose username</option>";
         while($row=pg_fetch_array($result)){
             echo "<option value='".$row['username']."'>".$row['email']."</option>";
@@ -32,7 +32,7 @@
 		}
 		else{
 			$sq=" Select * from feedback where fb_id='$id' or username='$name'";
-			$result=pg_query($Connect,$sq);
+			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
 				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des)
@@ -56,13 +56,13 @@
 				 <div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Feedback ID(*):  </label>
 							<div class="col-sm-10">
-							      <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Catepgy ID" value='<?php echo isset($_POST["txtID"])?($_POST["txtID"]):"";?>'>
+							      <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Feedback ID" value='<?php echo isset($_POST["txtID"])?($_POST["txtID"]):"";?>'>
 							</div>
 					</div>	
 				 <div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Username(*):  </label>
 							<div class="col-sm-10">
-							      <?php bind_username_List();  ?>
+							      <?php bind_Username_List();  ?>
 							</div>
                 </div>  
                 <div class="form-group">
@@ -82,7 +82,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new" />
-                              <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=category_management'" />
+                              <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=manager_feedback'" />
                               	
 						</div>
 					</div>
