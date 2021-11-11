@@ -8,7 +8,7 @@
     function bind_Username_List(){
         $sqlstring ="select username  from customer";
         $result =pg_query($sqlstring);
-        echo "<select name='CategoryList' class='from-control'>
+        echo "<select name='usernameList' class='from-control'>
         <option value='0'>Choose username</option>";
         while($row=pg_fetch_array($result)){
             echo "<option value='".$row['username']."'>".$row['email']."</option>";
@@ -20,22 +20,24 @@
 		$id =$_POST["txtID"];
 		$smalldes = $_POST["txtDes"];
         $des = $_POST["txtDesc"];
+        $username =$_POST['usernameList'];
 		$err="";
+
 		if($id==""){
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
-        if($username==""){
-			$err.="<li>Enter email of username, please</li>";
-		}
+        if(trim($username)==""){
+            $err.="<li>Enter Username,please</li>";
+        }
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
 		else{
 			$sq=" Select * from feedback where fb_id='$id' or username='$username'";
-			$result=pg_query($Connect,$sq);
+			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query($Connect,"INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
+				pg_query("INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
 				VALUES ('$id','$email','$username','$smalldes','$des')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_fb"/>';
 			}
