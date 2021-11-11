@@ -14,6 +14,7 @@
                 <th style='text-align:center'><strong>Delivery Day</strong></th>
                 <th style='text-align:center'><strong>Delivery Address</strong></th>
                 <th style='text-align:center'><strong>Payment</strong></th>
+                <th style='text-align:center'><strong>Product ID</strong></th>
             </tr>
         </thead>
 
