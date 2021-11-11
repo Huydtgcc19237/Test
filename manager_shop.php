@@ -50,8 +50,8 @@
               <td class="cotCheckBox"><?php echo $No;?></td>
               <td><?php echo $row["shop_name"];?></td>
               <td><?php echo $row["shop_loca"];?></td>
-              <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["shop_id"];?>"><img src='images/edit.png' border='0'  /></a></td>
-              <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["shop_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
+              <td style='text-align:center'><a href="?page=update_shop&&id=<?php echo $row["shop_id"];?>"><img src='images/edit.png' border='0'  /></a></td>
+              <td style='text-align:center'><a href="?page=manager_shop&&function=del&&id=<?php echo $row["shop_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             </tr>
             <?php
              $No++;}
