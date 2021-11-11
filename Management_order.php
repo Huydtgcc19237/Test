@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="style.css"/>
+ <!-- Bootstrap --> 
+ <link rel="stylesheet" type="text/css" href="style.css"/>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/bootstrap.min.css">
         <script>
@@ -19,7 +20,7 @@
             if(isset($_GET["id"]))
             {
                 $id=$_GET["id"];
-                pg_query("delete from orderdetails where orderid='$id'");
+                pg_query($Connect,"delete from category where Cat_ID='$id'");
             }
         }
         ?>
@@ -47,9 +48,8 @@
 
 		<tbody>
             <?php
-                include_once("connection.php");
                 $No=1;
-                $result = pg_query("SELECT * FROM orderdetails ") 
+                $result = pg_query("select * from orderdetails ") 
                         or die(pg_error());
                 while($row=pg_fetch_array($result))
                 {
