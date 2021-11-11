@@ -6,12 +6,12 @@
         <?php
 	include_once("connection.php");
     function bind_Username_List(){
-        $sqlstring ="select username, email from customer";
+        $sqlstring ="select username from customer";
         $result =pg_query($sqlstring);
         echo "<select name='UsernameList' class='from-control'>
         <option value='0'>Choose username</option>";
         while($row=pg_fetch_array($result)){
-            echo "<option value='".$row['username']."'>".$row['email']."</option>";
+            echo "<option value='".$row['username']."'</option>";
         }
         echo "</select>";
     }
