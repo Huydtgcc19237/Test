@@ -93,6 +93,7 @@
                               <li><a href="?page=product_management">Product</a></li>
                               <li><a href="?page=order">Order</a></li>
                               <li><a href="?page=manager_shop">Shop</a></li>
+                              <li><a href="?page=manager_fb">Feedback</a></li>
                         </ul>
                         </li>
                         <?php }
@@ -192,6 +193,9 @@
         }
         elseif ($page=="manager_shop") {
             include_once("manager_shop.php");
+        }
+        elseif ($page=="manager_fb") {
+            include_once("manager_feedback.php");
         }
      }
      else{
