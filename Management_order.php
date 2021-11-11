@@ -1,9 +1,35 @@
-<?php
-    if(isset($_SESSION['us']) && $_SESSION['admin']==1)
-    {
-?>
+    <!-- Bootstrap --> 
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+        <script>
+        function deleteConfirm()
+        {
+            if(confirm("Are you sure to delete!")){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        </script>
+         <?php
+        include_once("connection.php");
+        if(isset($_GET["function"])=='del')
+        {
+            if(isset($_GET["id"]))
+            {
+                $id=$_GET["id"];
+                pg_query("delete from orderdetails where orderid='$id'");
+            }
+        }
+        ?>
 <form name="frm" method="post">
     <h2 style="text-align: center;">Management Order Details</h2>
+    <p>
+        <img src="images/add.png" alt="Add new" width="16" height="16" border="0" /> 
+        <a href="?page=add_order"> Add</a>
+        </p>
     <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -37,6 +63,7 @@
                         <td><?php echo $row["delivery_loca"];?></td>
                         <td><?php echo $row["payment"];?></td>
                         <td><?php echo $row["pro_id"];?></td>
+                        <td style='text-align:center'><a href="?page=update_order&&id=<?php echo $row["orderid"];?>"><img src='images/edit.png' border='0'  /></a></td>
                         <td style='text-align:center'><a href="?page=order&&function=del&&id=<?php echo $row["orderid"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             <?php
                 $No++;

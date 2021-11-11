@@ -29,15 +29,15 @@
     ?>
 	<?php if(isset($_POST["btnUpdate"]))
 	{
-		$id=$_POST["txtID"];
-		$des=$_POST["txtDes"];
-        $username =$_POST['usernameList'];
-        $pro =$_POST['ProductList'];
+		$id= $_POST["txtID"];
+		$des= $_POST["txtDes"];
+        $username= $_POST['usernameList'];
+        $pro= $_POST['ProductList'];
 		$err="";
         if(($username)==""){
             $err.="<li>Enter Username,please</li>";
         }
-        if(($$pro)==""){
+        if(($pro)==""){
             $err.="<li>Enter Product ID,please</li>";
         }
 		if($err!=""){
