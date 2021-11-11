@@ -26,7 +26,7 @@
                     <tr>
                         <td style='text-align:center'><?php echo $No;?></td>
                         <td><?php echo $row["username"];?></td>
-                        <td><?php echo $row["fb_smalldesc"];?></td>
+                        <td><?php echo $row["fb_smalldes"];?></td>
                         <td><?php echo $row["fb_des"];?></td>
             <?php
                 $No++;
