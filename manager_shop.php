@@ -13,11 +13,11 @@
             }
         }
         </script>
-         <?php
+        <?php
         include_once("connection.php");
         if(isset($_GET["function"])=='del')
         {
-            if(isset($_GET["shop_id"]))
+            if(isset($_GET["id"]))
             {
                 $id=$_GET["id"];
                 pg_query("delete from shop where shop_id='$id'");
