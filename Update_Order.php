@@ -58,7 +58,7 @@
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("Update orderdetails set username='$name',deliverydate='$deliverydate',orderday='$orderdate',delivery_loca='$delivery_loca',payment='$payment',pro_id='$pro_id'");
+				pg_query("Update orderdetails set username='$name', deliverydate='$deliverydate', orderday='$orderdate', delivery_loca='$delivery_loca', payment='$payment', pro_id='$pro_id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=order"/>';
 			}
 			else
@@ -74,8 +74,8 @@
 				 <div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Order ID(*):  </label>
 							<div class="col-sm-10">
-								  <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Feedback ID" readonly 
-								  value='<?php echo $fb_id;?>'>
+								  <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Order ID" readonly 
+								  value='<?php echo $id;?>'>
 							</div>
 					</div>	
                 <div class="form-group">
