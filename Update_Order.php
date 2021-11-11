@@ -10,7 +10,7 @@
         echo "<select name='usernameList' class='from-control'>
         <option value='0'>Choose username</option>";
         while($row=pg_fetch_array($result)){
-            echo "<option value='".$row['username']."'>""</option>";
+            echo "<option value='".$row['username']."'>".$row['email']."</option>";
         }
         echo "</select>";
     }
