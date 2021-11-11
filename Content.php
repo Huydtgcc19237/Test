@@ -143,7 +143,7 @@ include_once("connection.php");
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="images/toy4,jpg" class="img-fluid" alt="Image">
+                            <img src="images/toy4.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
