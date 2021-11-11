@@ -106,6 +106,9 @@ include_once("connection.php");
                 </div>
                 
             </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <!-- End Products  -->
