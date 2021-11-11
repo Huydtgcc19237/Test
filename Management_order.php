@@ -1,29 +1,4 @@
-    <!-- Bootstrap --> 
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-        <script>
-        function deleteConfirm()
-        {
-            if(confirm("Are you sure to delete!")){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        </script>
-         <?php
-        include_once("connection.php");
-        if(isset($_GET["function"])=='del')
-        {
-            if(isset($_GET["id"]))
-            {
-                $id=$_GET["id"];
-                pg_query($Connect,"delete from orderdetails where orderid='$id'");
-            }
-        }
-        ?>
+
 <form name="frm" method="post">
     <h2 style="text-align: center;">Management Order Details</h2>
     <p>
