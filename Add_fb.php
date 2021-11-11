@@ -24,11 +24,14 @@
 		if($id==""){
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
+        if($username==""){
+			$err.="<li>Enter Feeback ID, please</li>";
+		}
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$sq=" Select * from feedback where fb_id='$id'";
+			$sq=" Select * from feedback where fb_id='$id' or username='$username'";
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
