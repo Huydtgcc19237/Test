@@ -159,6 +159,9 @@
         elseif($page=="update_fb"){
             include_once("update_fb.php");
         }
+        elseif($page=="update_order"){
+            include_once("Update_order.php");
+        }
         elseif($page=="logout"){
             include_once("Logout.php");
         }
