@@ -80,12 +80,15 @@ include_once("connection.php");
                     </div>
                 </div>
             </div>
-
+            <?php 
+            $sq = pg_query($Connect, "select * from product");
+            while($row=pg_fetch_array($sq)){
+            ?>
             <div class="row special-list">
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="images/toy1.jpg" class="img-fluid" alt="Image">
+                            <img src="images/<?php echo $row['pro_image'];?>" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="shop-detail.php" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -96,70 +99,12 @@ include_once("connection.php");
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4>DRAGON BALL MODEL (SONGOKU) </h4>
-                            <h5> $45</h5>
+                            <h4><?php echo $row['pro_name'];?></h4>
+                            <h5> <?php echo $row['pro_price'];?>$</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <img src="images/toy2.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="?page=cart">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>DRAGON BALL MODEL SPECIAL (SONGOKU)</h4>
-                            <h5> $150</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <img src="images/toy3.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="?page=cart">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4> 
-                            One Piece Monkey D Luffy Gear 3 Statue Resin Figurine GK Model New</h4>
-                            <h5> $250</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <img src="images/toy4.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="?page=cart">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4> 
-                            [Back Order] One Piece - Boom Studio - Flame Dragon Sabo with Portgas D. Ace Resin Statue</h4>
-                            <h5> $1275</h5>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
