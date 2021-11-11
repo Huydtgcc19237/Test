@@ -33,7 +33,6 @@
             <thead>
                 <tr>
                 <th style='text-align:center'><strong>No.</strong></th>
-                <th style='text-align:center'><strong>Email</strong></th>
                 <th style='text-align:center'><strong>Username</strong></th>
                 <th style='text-align:center'><strong>Small Feedback</strong></th>
                 <th style='text-align:center'><strong>Detail Feedback</strong></th>
