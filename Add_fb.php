@@ -24,9 +24,6 @@
 		if($id==""){
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
-		if($username==""){
-			$err.="<li>Enter choose username, please</li>";
-		}
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
