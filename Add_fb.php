@@ -32,10 +32,10 @@
 		}
 		else{
 			$sq=" Select * from feedback where fb_id='$id' or username='$username'";
-			$result=pg_query($sq);
+			$result=pg_query($Connect,$sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
+				pg_query($Connect,"INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
 				VALUES ('$id','$email','$username','$smalldes','$des')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_fb"/>';
 			}
@@ -59,12 +59,12 @@
 							      <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Feedback ID" value='<?php echo isset($_POST["txtID"])?($_POST["txtID"]):"";?>'>
 							</div>
 					</div>	
-                <div class="form-group">   
-                    <label for="" class="col-sm-2 control-label">Email of Username(*):  </label>
-							<div class="col-sm-10">
-							      <?php bind_Username_List();  ?>
-							</div>
-                </div>  
+                <div class="form-group">
+                           <label for="" class="col-sm-2 control-label">Email of username(*):  </label>
+                           <div class="col-sm-10">
+                           <?php bind_Username_List(); ?>
+                </div>
+            </div> 
                 <div class="form-group">
 						    <label for="txtMoTa" class="col-sm-2 control-label">Small description(*):  </label>
 							<div class="col-sm-10">
@@ -75,7 +75,7 @@
                     <div class="form-group">
 						    <label for="txtMoTa" class="col-sm-2 control-label">Description(*):  </label>
 							<div class="col-sm-10">
-							      <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Description" value='<?php echo isset($_POST["txtDes"])?($_POST["txtDes"]):"";?>'>
+							      <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Description" value='<?php echo isset($_POST["txtDesc"])?($_POST["txtDesc"]):"";?>'>
 							</div>
 					</div>
                     
