@@ -170,6 +170,9 @@
         elseif($page=="add_fb"){
             include_once("Add_fb.php");
         }
+        elseif($page=="add_shop"){
+            include_once("Add_shop.php");
+        }
         elseif($page=="update_category"){
             include_once("Update_Category.php");
         }
