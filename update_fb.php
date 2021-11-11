@@ -4,6 +4,16 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<?php
 	include_once('connection.php');
+    function bind_Username_List(){
+        $sqlstring ="select username, email  from customer";
+        $result =pg_query($sqlstring);
+        echo "<select name='usernameList' class='from-control'>
+        <option value='0'>Choose username</option>";
+        while($row=pg_fetch_array($result)){
+            echo "<option value='".$row['username']."'>".$row['email']."</option>";
+        }
+        echo "</select>";
+    }
         if(isset($_GET["id"])){
 			$id=$_GET["id"];
 			$result=pg_query("Select * from feedback where fb_id='$id'");
@@ -56,7 +66,7 @@
 						    <label for="txtTen" class="col-sm-2 control-label">Username(*):  </label>
 							<div class="col-sm-10">
 								  <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Catepgy Name" 
-								  value='<?php echo $name; ?>'>
+								  value='<?php echo  bind_Username_List() ?>'>
 							</div>
 					</div>
                     <div class="form-group">
