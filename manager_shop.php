@@ -1,7 +1,29 @@
-<?php
-    if(isset($_SESSION['us']) && $_SESSION['admin']==1)
-    {
-?>
+    <!-- Bootstrap --> 
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+        <script>
+        function deleteConfirm()
+        {
+            if(confirm("Are you sure to delete!")){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        </script>
+         <?php
+        include_once("connection.php");
+        if(isset($_GET["function"])=='del')
+        {
+            if(isset($_GET["id"]))
+            {
+                $id=$_GET["id"];
+                pg_query("delete from category where Cat_ID='$id'");
+            }
+        }
+        ?>
 <form name="frm" method="post">
     <h2 style="text-align: center;">Management Shop</h2>
     <p>
@@ -12,9 +34,9 @@
         <thead>
             <tr>
                 <th style='text-align:center'><strong>No.</strong></th>
-                <th style='text-align:center'><strong>ID Shop</strong></th>
                 <th style='text-align:center'><strong>Name Shop</strong></th>
                 <th style='text-align:center'><strong>Shop Address</strong></th>
+
             </tr>
         </thead>
 
@@ -29,7 +51,6 @@
             ?>
                     <tr>
                         <td style='text-align:center'><?php echo $No;?></td>
-                        <td><?php echo $row["shop_id"];?></td>
                         <td><?php echo $row["shop_name"];?></td>
                         <td><?php echo $row["shop_loca"];?></td>
                         <td style='text-align:center'><a href="?page=update_shop&&id=<?php echo $row["fb_id"];?>"><img src='images/edit.png' border='0'  /></a></td>
