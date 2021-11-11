@@ -59,7 +59,7 @@
                     <div class="form-group">
 						    <label for="txtMoTa" class="col-sm-2 control-label">Shop local(*):  </label>
 							<div class="col-sm-10">
-							      <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Shop address" value='<?php echo isset($_POST["txtLoca"])?($_POST["txtLoca"]):"";?>'>
+							      <input type="text" name="txtLoca" id="txtDes" class="form-control" placeholder="Shop address" value='<?php echo isset($_POST["txtLoca"])?($_POST["txtLoca"]):"";?>'>
 							</div>
 					</div>
                     
