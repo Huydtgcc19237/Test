@@ -21,6 +21,7 @@
 		$smalldes = $_POST["txtDes"];
         $des = $_POST["txtDesc"];
         $username =$_POST['usernameList'];
+        $email = $_POST['txtEmail'];
 		$err="";
 
 		if($id==""){
@@ -37,8 +38,8 @@
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("INSERT INTO feedback (fb_id, email, username, fb_smalldes, fb_des)
-				VALUES ('$id','$email','$username','$smalldes','$des')");
+				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des, email)
+				VALUES ('$id',,'$username','$smalldes','$des','$email')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_fb"/>';
 			}
 			else
