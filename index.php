@@ -99,7 +99,7 @@
                         <?php }
                         ?>
                         <li class="dropdown megamenu-fw">
-                        <a href="?page=shop">PRODUCT</a>
+                        <a href="?page=shop" class="nav-link" >PRODUCT</a>
                 </div>
                 <!-- /.navbar-collapse -->
 
