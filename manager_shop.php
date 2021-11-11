@@ -20,7 +20,7 @@
             if(isset($_GET["id"]))
             {
                 $id=$_GET["id"];
-                pg_query("delete from category where Cat_ID='$id'");
+                pg_query("delete from shop where shop_id='$id'");
             }
         }
         ?>
@@ -36,6 +36,8 @@
                 <th style='text-align:center'><strong>No.</strong></th>
                 <th style='text-align:center'><strong>Name Shop</strong></th>
                 <th style='text-align:center'><strong>Shop Address</strong></th>
+                <th><strong>Edit</strong></th>
+                <th><strong>Delete</strong></th>
 
             </tr>
         </thead>
