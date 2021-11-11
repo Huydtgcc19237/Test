@@ -6,12 +6,12 @@
         <?php
 	include_once("connection.php");
     function bind_Username_List(){
-        $sqlstring ="select username, email  from customer";
+        $sqlstring ="select email, username  from customer";
         $result =pg_query($sqlstring);
         echo "<select name='usernameList' class='from-control'>
         <option value='0'>Choose username</option>";
         while($row=pg_fetch_array($result)){
-            echo "<option value='".$row['username']."'>".$row['email']."</option>";
+            echo "<option value='".$row['email']."'>".$row['username']."</option>";
         }
         echo "</select>";
     }
@@ -21,7 +21,6 @@
 		$smalldes = $_POST["txtDes"];
         $des = $_POST["txtDesc"];
         $username =$_POST['usernameList'];
-        $email = $_POST['txtEmail'];
 		$err="";
 
 		if($id==""){
@@ -38,8 +37,8 @@
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des, email)
-				VALUES ('$id','$username','$smalldes','$des','$email')");
+				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des)
+				VALUES ('$id','$username','$smalldes','$des')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_fb"/>';
 			}
 			else
@@ -63,7 +62,7 @@
 							</div>
 					</div>	
                 <div class="form-group">
-                           <label for="" class="col-sm-2 control-label">Email of username(*):  </label>
+                           <label for="" class="col-sm-2 control-label">Username(*):  </label>
                            <div class="col-sm-10">
                            <?php bind_Username_List(); ?>
                 </div>
