@@ -8,7 +8,7 @@ include_once("connection.php");
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> MaverikStudio</strong></h1>
+                            <h1 class="m-b-20"><strong>Welcome To <br> ATN Studio</strong></h1>
                             <p class="m-b-40">Not everything<br> You think about yourself is true. <br> Everything okay in your world.</p>
                             <p><a class="btn hvr-hover" href="">Shop New</a></p>
                         </div>
@@ -20,7 +20,7 @@ include_once("connection.php");
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> MaverikStudio</strong></h1>
+                            <h1 class="m-b-20"><strong>Welcome To <br> ATN Studio</strong></h1>
                             <p class="m-b-40">Not everything<br> You think about yourself is true. <br> Everything okay in your world.</p>
                             <p><a class="btn hvr-hover" href="">Shop New</a></p>
                         </div>
@@ -32,7 +32,7 @@ include_once("connection.php");
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> MaverikStudio</strong></h1>
+                            <h1 class="m-b-20"><strong>Welcome To <br> ATN Studio</strong></h1>
                             <p class="m-b-40">Not everything<br> You think about yourself is true. <br> Everything okay in your world.</p>
                             <p><a class="btn hvr-hover" href="">Shop New</a></p>
                         </div>
@@ -44,7 +44,7 @@ include_once("connection.php");
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                             <h1 class="m-b-20"><strong>Welcome To <br> MaverikStudio</strong></h1>
+                             <h1 class="m-b-20"><strong>Welcome To <br> ATN Studio</strong></h1>
                             <p class="m-b-40">Not everything<br> You think about yourself is true. <br> Everything okay in your world.</p>
                             <p><a class="btn hvr-hover" href="shop.php">Shop New</a></p>
                         </div>
@@ -65,7 +65,7 @@ include_once("connection.php");
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h1>Featured Products</h1>
-                        <p>The most outstanding products of the marverik studio.</p>
+                        <p>The most outstanding products of the ATN Studio.</p>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ include_once("connection.php");
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="images/product3.png" class="img-fluid" alt="Image">
+                            <img src="images/toy1.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="shop-detail.php" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -96,7 +96,7 @@ include_once("connection.php");
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4>Lozenge Pants </h4>
+                            <h4>DRAGON BALL MODEL (SONGOKU) </h4>
                             <h5> $45</h5>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ include_once("connection.php");
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="images/tee.jpg" class="img-fluid" alt="Image">
+                            <img src="images/toy2.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -115,15 +115,15 @@ include_once("connection.php");
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4>Smiley Embroidery T-Shirt (White)</h4>
-                            <h5> $20</h5>
+                            <h4>DRAGON BALL MODEL SPECIAL (SONGOKU)</h4>
+                            <h5> $150</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="images/product7.jpg" class="img-fluid" alt="Image">
+                            <img src="images/toy3.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -135,15 +135,15 @@ include_once("connection.php");
                         </div>
                         <div class="why-text">
                             <h4> 
-                            Khaki Shirt ( Cream )</h4>
-                            <h5> $35</h5>
+                            One Piece Monkey D Luffy Gear 3 Statue Resin Figurine GK Model New</h4>
+                            <h5> $250</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover">
-                            <img src="images/product10.png" class="img-fluid" alt="Image">
+                            <img src="images/toy4,jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -155,8 +155,8 @@ include_once("connection.php");
                         </div>
                         <div class="why-text">
                             <h4> 
-                                Smiley T-shirt ( Black )</h4>
-                            <h5> $45</h5>
+                            [Back Order] One Piece - Boom Studio - Flame Dragon Sabo with Portgas D. Ace Resin Statue</h4>
+                            <h5> $1275</h5>
                         </div>
                     </div>
                 </div>

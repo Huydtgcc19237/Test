@@ -227,8 +227,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget">
-                            <h4>About MaverikStudio</h4>
-                            <p>Maverik Studio is a fashion label in Saigon Since 2017 </p>
+                            <h4>About ATN Studio</h4>
+                            <p>ATN Studio is a fashion label in Saigon Since 2017 </p>
                             <ul>
                                 <li><a href="https://www.facebook.com/Maverik-Studio-108431117661053"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="https://www.instagram.com/maverik.studio/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
@@ -256,7 +256,7 @@
                                     <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+84-788884871">+84-78888 4871</a></p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:maverikstudio2020@gmail.com">maverikstudio2020@gmail.com</a></p>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:maverikstudio2020@gmail.com">danghuy7021@gmail.com</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -269,8 +269,8 @@
 
     <!-- Start copyright  -->
     <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#"> MAVERIK TOY</a> Design By :
-            <a href="https://www.facebook.com/Maverik-Studio-108431117661053">ThanhHuy</a></p>
+        <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#"> ATN TOY</a> Design By :
+            <a href="https://www.facebook.com/Maverik-Studio-108431117661053">Thanh Huy</a></p>
     </div>
     <!-- End copyright  -->
 
