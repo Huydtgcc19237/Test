@@ -20,7 +20,7 @@
             if(isset($_GET["id"]))
             {
                 $id=$_GET["id"];
-                pg_query("delete from orderdetails where orderid='$id'");
+                pg_query($Connect,"delete from orderdetails where orderid='$id'");
             }
         }
         ?>
@@ -49,8 +49,7 @@
             <?php
                 include_once("connection.php");
                 $No=1;
-                $result = pg_query("SELECT * FROM orderdetails ") 
-                        or die(pg_error());
+                $result = pg_query($Connect,"SELECT * FROM orderdetails ") or die(pg_error());
                 while($row=pg_fetch_array($result))
                 {
             ?>
