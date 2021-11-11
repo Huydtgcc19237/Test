@@ -6,8 +6,8 @@
     <h2 style="text-align: center;">Management Feedback</h2>
     <p>
         <img src="images/add.png" alt="Add new" width="16" height="16" border="0" /> 
-        <a href="?page=add_category"> Add</a>
-        </p>
+        <a href="?page=add_fb"> Add</a>
+    </p>
     <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -33,7 +33,7 @@
                         <td><?php echo $row["fb_smalldes"];?></td>
                         <td><?php echo $row["fb_des"];?></td>
                         <td style='text-align:center'><a href="?page=update_category&&id=<?php echo $row["fb_id"];?>"><img src='images/edit.png' border='0'  /></a></td>
-                        <td style='text-align:center'><a href="?page=category_management&&function=del&&id=<?php echo $row["fb_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
+                        <td style='text-align:center'><a href="?page=manager_feedback&&function=del&&id=<?php echo $row["fb_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             <?php
                 $No++;
                 }
