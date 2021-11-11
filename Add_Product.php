@@ -63,8 +63,9 @@
 						{
 							copy($pic['tmp_name'], 'images/' .$pic['name']);
 							$filePic=$pic['name'];
-							$sqlstring="insert into product( pro_id, pro_name, pro_price,pro_desc, pro_qty, pro_image, cat_id, shop_id)
-							values('$id','$proname','$price','$detail','$qty','$filePic','$category','$shop')";
+							$sqlstring="INSERT INTO product(
+								pro_id, pro_name, pro_price, detaildesc, pro_qty, pro_image, cat_id, shop_id)
+								VALUES('$id','$proname','$price','$detail','$qty','$filePic','$category','$shop')";
 							pg_query($sqlstring);
 							echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 						}
