@@ -36,8 +36,8 @@
                 <th style='text-align:center'><strong>Username</strong></th>
                 <th style='text-align:center'><strong>Small Feedback</strong></th>
                 <th style='text-align:center'><strong>Detail Feedback</strong></th>
-                    <th style='text-align:center'><strong>Edit</strong></th>
-                    <th style='text-align:center'><strong>Delete</strong></th>
+                <th style='text-align:center'><strong>Edit</strong></th>
+                 <th style='text-align:center'><strong>Delete</strong></th>
                 </tr>
              </thead>
 
@@ -50,8 +50,6 @@
             ?>
 			<tr>
               <td class="cotCheckBox"><?php echo $No;?></td>
-              <td>
-                <?php echo $row["email"];?></td>
                 <td><?php echo $row["username"];?></td>
                 <td><?php echo $row["fb_smalldes"];?></td>
                 <td><?php echo $row["fb_des"];?></td>
