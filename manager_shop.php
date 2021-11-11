@@ -36,8 +36,8 @@
                 <th style='text-align:center'><strong>No.</strong></th>
                 <th style='text-align:center'><strong>Name Shop</strong></th>
                 <th style='text-align:center'><strong>Shop Address</strong></th>
-                <th><strong>Edit</strong></th>
-                <th><strong>Delete</strong></th>
+                <th style='text-align:center'><strong>Edit</strong></th>
+                <th style='text-align:center'><strong>Delete</strong></th>
             </tr>
              </thead>
 
