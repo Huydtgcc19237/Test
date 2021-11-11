@@ -7,35 +7,25 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 	<script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
 <?php
 	include_once("connection.php");
-	function bind_Category_List($selectedValue){
-		$sqlstring="SELECT cat_id, cat_name from category";
-		$result=pg_query($sqlstring);
-		echo"<Select name='CategoryList' class='form-control'>
-			<option value='0'>Choose category</option>";
-			while($row=pg_fetch_array($result)){
-				if($row['cat_id']==$selectedValue){
-					echo"<option value='". $row['cat_id']."' selected>".$row['Cat_Name']."</option>";
-				}
-				else{
-					echo"<option value='". $row['cat_id']."'>".$row['Cat_Name']."</option>";
-				}
-			}
-	echo"</select>";
+	function bind_Category_List(){
+		$sqlstring ="select cat_id, cat_name from category";
+		$result =pg_query($sqlstring);
+		echo "<select name='CategoryList' class='from-control'>
+		<option value='0'>Choose category</option>";
+		while($row=pg_fetch_array($result)){
+			echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
+		}
+		echo "</select>";
 	}
-	function bind_shop_List($selectedValue){
-		$sqlstring="SELECT shop_id, shop_name from shop";
-		$result=pg_query($sqlstring);
-		echo"<Select name='CategoryList' class='form-control'>
-			<option value='0'>Choose shop</option>";
-			while($row=pg_fetch_array($result)){
-				if($row['cat_id']==$selectedValue){
-					echo"<option value='". $row['shop_id']."' selected>".$row['shop_Name']."</option>";
-				}
-				else{
-					echo"<option value='". $row['shop_id']."'>".$row['shop_Name']."</option>";
-				}
-			}
-	echo"</select>";
+	function bind_Shop_List(){
+		$sqlstring ="select shop_id, shop_name from shop";
+		$result =pg_query($sqlstring);
+		echo "<select name='ShopList' class='from-control'>
+		<option value='0'>Choose Shop</option>";
+		while($row=pg_fetch_array($result)){
+			echo "<option value='".$row['shop_id']."'>".$row['shop_name']."</option>";
+		}
+		echo "</select>";
 	}
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
@@ -160,14 +150,14 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 <?php	
 	if(isset($_POST["btnUpdate"]))
 	{
-		$id=$_POST["txtID"];
-		$proname=$_POST["txtName"];
-		$short=$_POST['txtShort'];
-		$detail=$_POST['txtDetail'];
-		$price=$_POST['txtPrice'];
-		$qty=$_POST['txtQty'];
-		$pic=$_FILES['txtImage'];
-		$category=$_POST['CategoryList'];
+		$id =$_POST['txtID'];
+		$proname =$_POST['txtName'];
+		$detail =$_POST['txtDetail'];
+		$price =$_POST['txtPrice'];
+		$qty =$_POST['txtQty'];
+		$pic =$_FILES['txtImage'];
+		$category =$_POST['CategoryList'];
+		$shop =$_POST['ShopList'];
 		$err="";
 		if(trim($id)==""){
 			$err.="<li>Enter product ID, please</li>";
@@ -195,9 +185,9 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 					    if(pg_num_rows($result)==0){
 						        copy($pic['tmp_name'], "images/".$pic['name']);
 						        $filePic = $pic['name'];
-						        $sqlstring="UPDATE product set Pro_Name='$proname', pro_Price='$price',
-						        detaildesc='$detaildesc', Pro_qty=$qty,
-						        Pro_image='$filePic', Cat_ID='$category', shop_id='$shop' WHERE Pro_ID='$id'";
+						        $sqlstring="UPDATE public.product
+								SET pro_name='$proname', pro_price='$price', detaildesc='$detaildesc', pro_qty=$qty, pro_image='$filePic', cat_id='$category', shop_id='$shop'
+								WHERE pro_id='$id'";
 						        pg_query($sqlstring);
 						        echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 					        }
@@ -217,9 +207,9 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
 				$sq="SELECT * from product where Pro_ID != '$id' and Pro_Name='$proname'";
 				$result=pg_query($sq);
 				if(pg_num_rows($result)==0){
-					$sqlstring="UPDATE product set Pro_Name='$proname',
-					pro_Price=$price, detaildesc='$detaildesc',
-					Pro_qty=$qty, Cat_ID='$category', shop_id='$shop' WHERE Pro_ID='$id'";
+					$sqlstring="UPDATE public.product
+					SET pro_name='$proname', pro_price='$price', detaildesc='$detaildesc', pro_qty=$qty, pro_image='$filePic', cat_id='$category', shop_id='$shop'
+					WHERE pro_id='$id'";
 					pg_query($sqlstring);
                     echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 				}
