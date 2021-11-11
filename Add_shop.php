@@ -9,7 +9,7 @@
 	{
 		$id =$_POST["txtID"];
 		$name = $_POST["txtName"];
-		$loca = $_POST["txtloca"];
+		$local = $_POST["txtLoca"];
 		$err="";
 		if($id==""){
 			$err.="<li>Enter Shop ID, please</li>";
@@ -26,7 +26,7 @@
 			if(pg_num_rows($result)==0)
 			{
 				pg_query("INSERT INTO shop (shop_id, shop_name, shop_loca)
-				VALUES ('$id','$name','$loca')");
+				VALUES ('$id','$name','$local')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_shop"/>';
 			}
 			else
@@ -59,7 +59,7 @@
                     <div class="form-group">
 						    <label for="txtMoTa" class="col-sm-2 control-label">Shop local(*):  </label>
 							<div class="col-sm-10">
-							      <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Shop address" value='<?php echo isset($_POST["txtloca"])?($_POST["txtloca"]):"";?>'>
+							      <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Shop address" value='<?php echo isset($_POST["txtLoca"])?($_POST["txtLoca"]):"";?>'>
 							</div>
 					</div>
                     
