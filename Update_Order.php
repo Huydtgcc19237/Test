@@ -42,19 +42,19 @@
 		$id=$_POST["txtID"];
 		$des=$_POST["txtDes"];
         $username =$_POST['usernameList'];
-        $product =$_POST['productList'];
+        $pro =$_POST['ProductList'];
 		$err="";
         if(($username)==""){
             $err.="<li>Enter Username,please</li>";
         }
-        if(($$product)==""){
+        if(($$pro)==""){
             $err.="<li>Enter Product ID,please</li>";
         }
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$sq="select * from orderdetails where orderid='$id' and username='$username'";
+			$sq="select * from orderdetails where orderid='$id' and username='$username', pro_id='$pro'";
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
