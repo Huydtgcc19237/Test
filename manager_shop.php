@@ -20,7 +20,7 @@
             if(isset($_GET["id"]))
             {
                 $id=$_GET["id"];
-                pg_query("delete from shop where shop_id='$id'");
+                pg_query($Connect,"delete from shop where shop_id='$id'");
             }
         }
         ?>
