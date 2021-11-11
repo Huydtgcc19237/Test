@@ -17,7 +17,7 @@
         include_once("connection.php");
         if(isset($_GET["function"])=='del')
         {
-            if(isset($_GET["id"]))
+            if(isset($_GET["shop_id"]))
             {
                 $id=$_GET["id"];
                 pg_query("delete from shop where shop_id='$id'");
@@ -28,7 +28,7 @@
     <h2 style="text-align: center;">Management Shop</h2>
     <p>
         <img src="images/add.png" alt="Add new" width="16" height="16" border="0" /> 
-        <a href="?page=add_shop"> Add</a>
+        <a href="?page=add_shop">Add</a>
     </p>
     <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
