@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Marverik.com</title>
+    <title>ATN SHOP</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
