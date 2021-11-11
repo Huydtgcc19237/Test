@@ -14,16 +14,6 @@
         }
         echo "</select>";
     }
-    function bind_Product_List(){
-        $sqlstring ="select pro_id, pro_name from product";
-        $result =pg_query($sqlstring);
-        echo "<select name='ProductList' class='from-control'>
-        <option value='0'>Choose Product ID</option>";
-        while($row=pg_fetch_array($result)){
-            echo "<option value='".$row['pro_id']."'>".$row['pro_name']."</option>";
-        }
-        echo "</select>";
-    }
     if(isset($_GET["id"])){
 		$id=$_GET["id"];
 		$result=pg_query("Select * from orderdetails where orderid='$id'");
