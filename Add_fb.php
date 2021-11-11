@@ -27,7 +27,7 @@
 		if($id==""){
 			$err.="<li>Enter Feeback ID, please</li>";
 		}
-        if(trim($username)==""){
+        if(($username)==""){
             $err.="<li>Enter Username,please</li>";
         }
 		if($err!=""){

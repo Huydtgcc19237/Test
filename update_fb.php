@@ -14,31 +14,32 @@
         }
         echo "</select>";
     }
-        if(isset($_GET["id"])){
-			$id=$_GET["id"];
-			$result=pg_query("Select * from feedback where fb_id='$id'");
-			$row=pg_fetch_array($result);
-			$fb_id=$row['fb_id'];
-			$username=$row['username'];
-            $small_des=$row['smalldes'];
-			$fb_des=$row['fb_des'];
-            $email=$row['email'];
+    if(isset($_GET["id"])){
+		$id=$_GET["id"];
+		$result=pg_query("Select * from feedback where fb_id='$id'");
+		$row=pg_fetch_array($result);
+		$fb_id=$row['fb_id'];
+		$username=$row['username'];
+        $small_des=$row['smalldes'];
+		$fb_des=$row['fb_des'];
+        $email=$row['email'];
 		
     ?>
 	<?php if(isset($_POST["btnUpdate"]))
 	{
 		$id=$_POST["txtID"];
-		$name=$_POST["txtName"];
 		$des=$_POST["txtDes"];
+        $username =$_POST['usernameList'];
+        $email = $_POST['txtEmail'];
 		$err="";
-		if($name==""){
-			$err.="<li>Enter Username, please<li>";
-		}
+        if(($username)==""){
+            $err.="<li>Enter Username,please</li>";
+        }
 		if($err!=""){
 			echo"<ul>$err</ul>";
 		}
 		else{
-			$sq="select * from feedback wherefb_id='$id' and username='$name'";
+			$sq="select * from feedback wherefb_id='$id' and username='$username'";
 			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
@@ -62,13 +63,11 @@
 								  value='<?php echo $fb_id;?>'>
 							</div>
 					</div>	
-				 <div class="form-group">
-						    <label for="txtTen" class="col-sm-2 control-label">Username(*):  </label>
-							<div class="col-sm-10">
-								  <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Catepgy Name" 
-								  value='<?php echo  bind_Username_List() ?>'>
-							</div>
-					</div>
+                <div class="form-group">
+                           <label for="" class="col-sm-2 control-label">Email of username(*):  </label>
+                           <div class="col-sm-10">
+                           <?php bind_Username_List(); ?></div>
+                </div>
                     <div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Smalldesc(*):  </label>
 							<div class="col-sm-10">
