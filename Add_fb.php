@@ -39,7 +39,7 @@
 			if(pg_num_rows($result)==0)
 			{
 				pg_query("INSERT INTO feedback (fb_id, username, fb_smalldes, fb_des, email)
-				VALUES ('$id',,'$username','$smalldes','$des','$email')");
+				VALUES ('$id','$username','$smalldes','$des','$email')");
 				echo '<meta http-equiv="refresh" content="0,URL=?page=manager_fb"/>';
 			}
 			else
