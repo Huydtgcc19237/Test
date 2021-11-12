@@ -223,8 +223,8 @@
                         <div class="footer-link">
                             <h4>Information</h4>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="https://www.facebook.com/Maverik-Studio-108431117661053"><i class="fas fa-flag">">About Us</i></a></li>
+                                <li><a href="https://www.facebook.com/DTH.office0107/">Customer Service</a></li>
                             </ul>
                         </div>
                     </div>
