@@ -41,7 +41,7 @@
 	}
 	?>
 <div class="container">
-	<h2>Updating Product Category</h2>
+	<h2>Updating Shop</h2>
 			 	<form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
 				 <div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Shop ID(*):  </label>
