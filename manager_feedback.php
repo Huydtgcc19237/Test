@@ -49,9 +49,6 @@
                 <td><?php echo $row["username"];?></td>
                 <td><?php echo $row["fb_smalldes"];?></td>
                 <td><?php echo $row["fb_des"];?></td>
-              <td style='text-align:center'><a href="?page=update_fb&&id=<?php echo $row["fb_id"];?>">
-              <img src='images/edit.png' border='0'  /></a></td>
-              <td style='text-align:center'><a href="?page=manager_fb&&function=del&&id=<?php echo $row["fb_id"];?>" onclick="deleteConfirm()"><img src='images/delete.png' border='0'></a></td>
             </tr>
             <?php
              $No++;}
