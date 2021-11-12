@@ -92,17 +92,18 @@
                         <div class="row product-categorie-box">
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                    <div class="row">
+                                    <div class="row special-list">
+                                    <?php 
+                                        $sq = pg_query($Connect,"select * from product");
+                                        while($row=pg_fetch_array($sq)){
+                                    ?>
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
                                                     <div class="type-lb">
                                                         <p class="sale">HOT</p>
                                                     </div>
-                                                    <?php 
-                                                    $sq = pg_query($Connect,"select * from product");
-                                                    while($row=pg_fetch_array($sq)){
-                                                    ?>
+                                                    
                                                     <img src="images/<?php echo $row['pro_image'];?>" class="img-fluid" alt="Image">
                                                     <div class="mask-icon">
                                                         <ul>
@@ -117,20 +118,16 @@
                                                     <h4><?php echo $row['pro_name'];?> </h4>
                                                     <h5><?php echo $row['pro_price'];?> $</h5>
                                                 </div>
-                                            </div>
-                                            
-                                    </div>
-                                    
+                                            </div> 
+                                        </div>
+                                        <?php
+                                        }
+                                        ?>
                                 </div>
                             </div>
                         </div>
-                        <?php
-                         }
-                        ?>
-
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
