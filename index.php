@@ -156,6 +156,9 @@
         elseif($page=="update_product"){
             include_once("Update_Product.php");
         }
+        elseif($page=="update_shop"){
+            include_once("Update_shop.php");
+        }
         elseif($page=="update_fb"){
             include_once("update_fb.php");
         }
