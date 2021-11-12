@@ -118,9 +118,7 @@
                                                     <h5><?php echo $row['pro_price'];?> $</h5>
                                                 </div>
                                             </div>
-                                            <?php
-                                            }
-                                            ?>
+                                            
                                     </div>
                                     
                                 </div>
@@ -128,6 +126,9 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
