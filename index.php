@@ -223,8 +223,8 @@
                         <div class="footer-link">
                             <h4>Information</h4>
                             <ul>
-                                <li><a>About Us</a></li>
-                                <li><a>Customer Service</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
                             </ul>
                         </div>
                     </div>
