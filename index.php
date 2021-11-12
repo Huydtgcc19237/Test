@@ -220,17 +220,6 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link">
-                            <h4>Information</h4>
-                            <ul>
-                            <li>
-                                <p><i class="fas fa-map-marker-alt"></i>Contact Us </p>
-                            </li>
-                                <li><a href="https://www.facebook.com/DTH.office0107/">Customer Service</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-link-contact">
                             <h4>Contact Us</h4>
                             <ul>
