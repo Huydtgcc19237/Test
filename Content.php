@@ -80,11 +80,12 @@ include_once("connection.php");
                     </div>
                 </div>
             </div>
+          
+            <div class="row special-list">
             <?php 
             $sq = pg_query($Connect,"select * from product");
             while($row=pg_fetch_array($sq)){
             ?>
-            <div class="row special-list">
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -104,11 +105,11 @@ include_once("connection.php");
                         </div>
                     </div>
                 </div>
-                
-            </div>
-            <?php
+                <?php
             }
-            ?>
+            ?> 
+            </div>
+            
         </div>
     </div>
     <!-- End Products  -->
