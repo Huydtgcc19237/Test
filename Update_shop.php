@@ -8,9 +8,9 @@
 			$id=$_GET["id"];
 			$result=pg_query("select * from shop where shop_id='$id'");
 			$row=pg_fetch_array($result);
-			$cat_id=$row['shop_id'];
-			$cat_name=$row['shop_name'];
-			$cat_dec=$row['shop_loca'];
+			$shop_id=$row['shop_id'];
+			$shop_name=$row['shop_name'];
+			$local=$row['shop_loca'];
 		
     ?>
 	<?php if(isset($_POST["btnUpdate"]))
@@ -27,10 +27,10 @@
 		}
 		else{
 			$sq="select * from shop where shop_id='$id' and shop_name='$name'";
-			$result=pg_query($Connect,$sq);
+			$result=pg_query($sq);
 			if(pg_num_rows($result)==0)
 			{
-				pg_query($Connect,"Update shop set shop_name='$name', shop_loca='$loca' where shop_id ='$id'");
+				pg_query("Update shop set shop_name='$name', shop_loca='$loca' where shop_id ='$id'");
 				echo '<meta http-equiv="refresh" content="0; URL=?page=manager_shop"/>';
 			}
 			else
