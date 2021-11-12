@@ -32,8 +32,6 @@
                 <th style='text-align:center'><strong>Username</strong></th>
                 <th style='text-align:center'><strong>Small Feedback</strong></th>
                 <th style='text-align:center'><strong>Detail Feedback</strong></th>
-                <th style='text-align:center'><strong>Edit</strong></th>
-                 <th style='text-align:center'><strong>Delete</strong></th>
                 </tr>
              </thead>
 
