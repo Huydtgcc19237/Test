@@ -47,14 +47,14 @@
 						    <label for="txtTen" class="col-sm-2 control-label">Shop ID(*):  </label>
 							<div class="col-sm-10">
 								  <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Shop ID" readonly 
-								  value='<?php echo $cat_id;?>'>
+								  value='<?php echo$shop_id;?>'>
 							</div>
 					</div>	
 				 <div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Shop Name(*):  </label>
 							<div class="col-sm-10">
 								  <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Shop Name" 
-								  value='<?php echo $cat_name; ?>'>
+								  value='<?php echo $shop_name; ?>'>
 							</div>
 					</div>
                     
@@ -62,7 +62,7 @@
 						    <label for="txtMoTa" class="col-sm-2 control-label">Shop Address(*):  </label>
 							<div class="col-sm-10">
 								  <input type="text" name="txtloca" id="txtloca" class="form-control" placeholder="Shop Address" 
-								  value='<?php echo $cat_des;?>'>
+								  value='<?php echo $local;?>'>
 							</div>
 					</div>
                     
